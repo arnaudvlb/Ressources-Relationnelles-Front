@@ -1,0 +1,147 @@
+/* =====================
+   THEMES
+===================== */
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --primary: #2563eb;
+  --border: #e5e7eb;
+  --banner-bg: #000;
+  --banner-text: #fff;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --primary: #60a5fa;
+  --border: #1e293b;
+  --banner-bg: #020617;
+  --banner-text: #e5e7eb;
+}
+
+/* =====================
+   HEADER
+===================== */
+
+header {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.banner {
+  background: var(--banner-bg);
+  color: var(--banner-text);
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+}
+
+.banner img{
+  height: 80px;
+}
+
+/* =====================
+   NAVIGATION
+===================== */
+
+nav {
+  border-bottom: 1px solid var(--border);
+  display: flex;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =====================
+   DESKTOP MENU
+===================== */
+
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding-left: 0;
+}
+
+.nav-container ul a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.nav-container ul a:hover {
+  color: var(--primary);
+}
+
+/* =====================
+   MENU MOBILE
+===================== */
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.burger.open {
+  transform: rotate(90deg);
+}
+
+.mobile-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.35s ease;
+}
+
+.mobile-wrapper.open {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}

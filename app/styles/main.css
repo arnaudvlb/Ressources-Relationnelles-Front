@@ -1,0 +1,114 @@
+/* =====================
+   THEME VARIABLES
+===================== */
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --primary: #2563eb;
+  --border: #e5e7eb;
+  --surface: #f8fafc;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --primary: #60a5fa;
+  --border: #1e293b;
+  --surface: #020617;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+/* =====================
+   RESET / BASE
+===================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* =====================
+   LAYOUT UTILS
+===================== */
+
+.page-center {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* =====================
+   FORM ELEMENTS
+===================== */
+
+label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   LINKS
+===================== */
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
