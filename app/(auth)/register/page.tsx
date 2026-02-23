@@ -1,7 +1,7 @@
 "use client";
 
 import "../../global.css";
-import "../../../styles/auth.css";
+import "../../../components/AuthForm/AuthForm.css";
 
 export default function RegisterPage() {
   return (
@@ -76,4 +76,5 @@ export default function RegisterPage() {
       </div>
     </div>
   );
+  
 }
