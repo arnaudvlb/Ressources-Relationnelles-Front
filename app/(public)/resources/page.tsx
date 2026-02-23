@@ -1,7 +1,7 @@
 "use client";
 
-import "../../styles/main.css";
-import "../../styles/resources.css";
+import "../../global.css";
+import "../../../styles/resources.css";
 
 type Resource = {
   id: number;
@@ -56,7 +56,7 @@ export default function ResourcesPage() {
 
     <div className="resources-grid">
       {resourceData.map(resource => (
-        <article className="resource-card">
+        <article key={resource.id} className="resource-card">
           <div className="resource-content">
             <span className="resource-libelleCategorie">
               {resource.libelleCategorie}

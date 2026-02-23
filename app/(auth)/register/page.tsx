@@ -1,7 +1,7 @@
 "use client";
 
-import "../../styles/main.css";
-import "../../styles/auth.css";
+import "../../global.css";
+import "../../../styles/auth.css";
 
 export default function RegisterPage() {
   return (
