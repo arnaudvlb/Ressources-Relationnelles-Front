@@ -1,7 +1,7 @@
 "use client";
 
 import "../../global.css";
-import "../../../components/AuthForm/AuthForm.css";
+import "../../../components/AuthForm/AuthForm.module.css";
 
 export default function RegisterPage() {
   return (

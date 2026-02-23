@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import "../../global.css";
-import "../../../components/AuthForm/AuthForm.css";
+import "../../../components/AuthForm/AuthForm.module.css";
 
 export default function LoginPage() {
   return (
