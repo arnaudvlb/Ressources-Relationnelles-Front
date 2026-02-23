@@ -7,7 +7,7 @@
   --text: #111111;
   --primary: #2563eb;
   --border: #e5e7eb;
-  --banner-bg: #000;
+  --banner-bg: #fff;
   --banner-text: #fff;
 }
 
@@ -48,7 +48,7 @@ header {
 
 nav {
   border-bottom: 1px solid var(--border);
-  display: flex;
+  display: grid;
 }
 
 .nav-container {

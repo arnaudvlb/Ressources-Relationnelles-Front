@@ -1,0 +1,77 @@
+"use client";
+
+import "../../styles/main.css";
+import "../../styles/resources.css";
+
+type Resource = {
+  id: number;
+  titre: string;
+  contenu: string;
+  libelleCategorie: string;
+};
+
+const resourceData: Resource[] = [
+  {
+    id: 1,
+    titre: "Tri des déchets",
+    contenu: "Apprenez comment trier vos déchets efficacement et réduire votre impact environnemental.",
+    libelleCategorie: "Environnement"
+  },
+  {
+    id: 2,
+    titre: "Participation citoyenne",
+    contenu: "Découvrez les moyens de participer activement à la vie de votre commune et vos quartiers.",
+    libelleCategorie: "Civisme"
+  },
+  {
+    id: 3,
+    titre: "Énergie renouvelable",
+    contenu: "Comprenez les avantages des énergies renouvelables et comment les intégrer chez vous.",
+    libelleCategorie: "Écologie"
+  },
+  {
+    id: 4,
+    titre: "Sécurité routière",
+    contenu: "Informez-vous sur les bonnes pratiques pour améliorer la sécurité sur les routes.",
+    libelleCategorie: "Sécurité"
+  },
+  {
+    id: 5,
+    titre: "Élections locales",
+    contenu: "Tout ce que vous devez savoir pour voter et participer aux élections locales.",
+    libelleCategorie: "Civisme"
+  },
+  {
+    id: 6,
+    titre: "Mobilité douce",
+    contenu: "Encourager les déplacements à pied, à vélo et en transport en commun pour réduire la pollution.",
+    libelleCategorie: "Environnement"
+  },
+];
+
+export default function ResourcesPage() {
+    return (
+  <main className="resources-page">
+    <h1 className="resources-title">Ressources</h1>
+
+    <div className="resources-grid">
+      {resourceData.map(resource => (
+        <article className="resource-card">
+          <div className="resource-content">
+            <span className="resource-libelleCategorie">
+              {resource.libelleCategorie}
+            </span>
+
+            <h2 className="resource-titre">
+              {resource.titre}
+            </h2>
+
+            <p className="resource-contenu">
+              {resource.contenu}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+)};

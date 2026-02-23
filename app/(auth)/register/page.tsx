@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import "../../styles/main.css";
 import "../../styles/auth.css";
 
@@ -11,13 +10,12 @@ export default function RegisterPage() {
         <h1 className="auth-title">Créer un compte</h1>
 
         <form className="auth-form">
-          {/* Nom et Prénom */}
           <div className="form-group">
             <label htmlFor="firstName">Prénom</label>
             <input
               type="text"
               id="firstName"
-              placeholder="Votre prénom"
+              placeholder="Prénom"
               required
             />
           </div>
@@ -27,23 +25,21 @@ export default function RegisterPage() {
             <input
               type="text"
               id="lastName"
-              placeholder="Votre nom"
+              placeholder="Nom"
               required
             />
           </div>
 
-          {/* Pseudo */}
           <div className="form-group">
             <label htmlFor="username">Pseudo</label>
             <input
               type="text"
               id="username"
-              placeholder="Votre pseudo"
+              placeholder="Pseudo"
               required
             />
           </div>
 
-          {/* Email */}
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -54,7 +50,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Téléphone */}
           <div className="form-group">
             <label htmlFor="phone">Téléphone</label>
             <input
@@ -64,7 +59,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Mot de passe */}
           <div className="form-group">
             <label htmlFor="password">Mot de passe</label>
             <input

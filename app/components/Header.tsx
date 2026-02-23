@@ -8,9 +8,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
 
-  /* =========================
-     THEME SYSTEME
-  ========================= */
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -28,9 +25,6 @@ export default function Header() {
       mediaQuery.removeEventListener("change", e => applyTheme(e.matches));
   }, []);
 
-  /* =========================
-     FERMER MENU AU RESIZE
-  ========================= */
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -42,9 +36,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  /* =========================
-     CLICK OUTSIDE
-  ========================= */
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -60,6 +51,7 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
+  // TODO: A fix pour régler le bug du double menu
   return (
     <header>
       <div className="banner">
@@ -71,6 +63,7 @@ export default function Header() {
           <ul>
             <li><Link href="/">Accueil</Link></li>
             <li><Link href="/login">Connexion</Link></li>
+            <li><Link href="/resources">Ressources</Link></li>
           </ul>
 
           <button
@@ -87,6 +80,7 @@ export default function Header() {
           <ul className="mobile-menu">
             <li><Link href="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
             <li><Link href="/login" onClick={() => setMenuOpen(false)}>Connexion</Link></li>
+            <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
           </ul>
         </div>
       </nav>
