@@ -2,7 +2,7 @@
    AUTH CARD
 ===================== */
 
-.auth-card {
+.authCard {
   width: 100%;
   max-width: 380px;
   background: var(--bg);
@@ -15,7 +15,7 @@
    TITLES
 ===================== */
 
-.auth-title {
+.authTitle {
   margin: 0 0 1.5rem;
   text-align: center;
   font-size: 1.5rem;
@@ -26,13 +26,13 @@
    FORM
 ===================== */
 
-.auth-form {
+.authForm {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.form-group {
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -42,7 +42,7 @@
    FOOTER
 ===================== */
 
-.auth-footer {
+.authFooter {
   margin-top: 1.5rem;
   text-align: center;
   font-size: 0.9rem;

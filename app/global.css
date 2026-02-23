@@ -39,7 +39,7 @@ body {
    LAYOUT UTILS
 ===================== */
 
-.page-center {
+.pageCenter {
   min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@ button {
   cursor: pointer;
 }
 
-.btn-primary {
+.btnPrimary {
   background: var(--primary);
   color: white;
   border: none;
@@ -95,7 +95,7 @@ button {
   transition: opacity 0.2s ease;
 }
 
-.btn-primary:hover {
+.btnPrimary:hover {
   opacity: 0.9;
 }
 
