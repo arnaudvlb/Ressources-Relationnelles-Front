@@ -1,14 +1,6 @@
 "use client";
 
-type AuthFormProps = {
-  titreForm: string;
-  champs: string[];
-  buttonText: string;
-  placeholders?: string[];
-  onSubmit?: (data: Record<string, string>) => void;
-  footerContent?: React.ReactNode;
-}
-
+import { AuthFormProps } from "@/types/components/AuthFormProps";
 import styles from "@/components/AuthForm/AuthForm.module.css";
 import Button from "@/components/ui/Button/Button";
 

@@ -1,6 +1,5 @@
 "use client";
 
-import "../../../styles/resources.css";
 import Card from "@/components/ui/Card/Card";
 
 // TODO: remplacer les données statiques par des données dynamiques provenant de l'API

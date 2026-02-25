@@ -1,11 +1,6 @@
-type CardProps = {
-  resources: {
-    id: number;
-    titre: string;
-    contenu: string;
-    libelleCategorie: string;
-  }[];
-};
+"use client";
+
+import { CardProps } from "@/types/components/CardProps";
 import styles from "@/components/ui/Card/Card.module.css";
 
 export default function Card({ resources }: CardProps) {

@@ -88,3 +88,14 @@ input:focus {
 .link:hover {
   text-decoration: underline;
 }
+
+/* =====================
+   PAGE
+===================== */
+
+.resources-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
