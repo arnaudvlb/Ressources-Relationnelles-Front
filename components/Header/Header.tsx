@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,13 +53,13 @@ export default function Header() {
 
   // TODO: A fix pour régler le bug du double menu
   return (
-    <header>
-      <div className="banner">
+    <header className={styles.header}>
+      <div className={styles.banner}>
         <img src="../logoMinistere.svg" alt="Logo ministère"/>
       </div>
 
-      <nav ref={navRef}>
-        <div className="nav-container">
+      <nav ref={navRef} className={styles.nav}>
+        <div className={styles.navContainer}>
           <ul>
             <li><Link href="/">Accueil</Link></li>
             <li><Link href="/login">Connexion</Link></li>
@@ -67,7 +67,7 @@ export default function Header() {
           </ul>
 
           <button
-            className={`burger ${menuOpen ? "open" : ""}`}
+            className={`${styles.burger} ${menuOpen ? styles.open : ""}`}
             onClick={() => setMenuOpen(prev => !prev)}
             aria-label="Menu"
             aria-expanded={menuOpen}
@@ -76,8 +76,8 @@ export default function Header() {
           </button>
         </div>
 
-        <div className={`mobile-wrapper ${menuOpen ? "open" : ""}`}>
-          <ul className="mobile-menu">
+        <div className={`${styles.mobileWrapper} ${menuOpen ? styles.open : ""}`}>
+          <ul className={styles.mobileMenu}>
             <li><Link href="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
             <li><Link href="/login" onClick={() => setMenuOpen(false)}>Connexion</Link></li>
             <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
