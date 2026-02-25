@@ -10,6 +10,7 @@ interface AuthFormProps {
 }
 
 import styles from "@/components/AuthForm/AuthForm.module.css";
+import Button from "@/components/ui/Button/Button";
 
 export default function AuthForm({
   titreForm,
@@ -35,10 +36,10 @@ export default function AuthForm({
               />
             </div>
           ))}
-          <button type="submit" className="btnPrimary">
-            {buttonText}
-          </button>
-          <div className={styles.authFooter}>{footerContent}</div>
+          <Button text={buttonText} />
+          {footerContent && (
+            <div className={styles.authFooter}>{footerContent}</div>
+          )}
         </form>
       </div>
     </div>
