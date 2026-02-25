@@ -1,6 +1,9 @@
 "use client";
 
 import "../../../styles/resources.css";
+import Card from "@/components/ui/Card/Card";
+
+// TODO: remplacer les données statiques par des données dynamiques provenant de l'API
 
 type Resource = {
   id: number;
@@ -53,24 +56,6 @@ export default function ResourcesPage() {
   <main className="resources-page">
     <h1 className="resources-title">Ressources</h1>
 
-    <div className="resources-grid">
-      {resourceData.map(resource => (
-        <article key={resource.id} className="resource-card">
-          <div className="resource-content">
-            <span className="resource-libelleCategorie">
-              {resource.libelleCategorie}
-            </span>
-
-            <h2 className="resource-titre">
-              {resource.titre}
-            </h2>
-
-            <p className="resource-contenu">
-              {resource.contenu}
-            </p>
-          </div>
-        </article>
-      ))}
-    </div>
+    <Card resources={resourceData} />
   </main>
 )};

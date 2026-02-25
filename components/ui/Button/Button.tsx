@@ -1,6 +1,6 @@
 "use client";
 
-interface ButtonProps {
+type ButtonProps = {
     text: string;
 }
 

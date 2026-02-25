@@ -1,0 +1,85 @@
+/* =====================
+   TITLE
+===================== */
+
+.cardTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* =====================
+   GRID
+===================== */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* =====================
+   CARD
+===================== */
+
+.card {
+  background: var(--bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px var(--shadow);
+}
+
+/* =====================
+   CONTENT
+===================== */
+
+.cardContent {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardLibelleCategorie {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.cardTitre {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cardContenu {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #6b7280;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 900px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}

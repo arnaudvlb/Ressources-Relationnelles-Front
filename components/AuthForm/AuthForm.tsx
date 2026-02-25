@@ -1,6 +1,6 @@
 "use client";
 
-interface AuthFormProps {
+type AuthFormProps = {
   titreForm: string;
   champs: string[];
   buttonText: string;
