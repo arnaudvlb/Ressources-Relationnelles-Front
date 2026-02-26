@@ -1,6 +1,7 @@
 "use client";
 
 import Card from "@/components/ui/Card/Card";
+// import { useRessources } from "@/hooks/useRessources";
 
 // TODO: remplacer les données statiques par des données dynamiques provenant de l'API
 
@@ -51,10 +52,12 @@ const resourceData: Resource[] = [
 ];
 
 export default function ResourcesPage() {
+// const { resources } = useRessources();
+// console.log(resources.member);
     return (
   <main className="resources-page">
     <h1 className="resources-title">Ressources</h1>
-
+    
     <Card resources={resourceData} />
   </main>
 )};

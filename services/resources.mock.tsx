@@ -1,4 +1,4 @@
-import { Ressource } from "@/types/database/resources";
+import { Ressource } from "@/types/database/ressources";
 import { CATEGORIEDATA } from "@/services/categorie.mock";
 
 export const RESSOURCEDATA: Ressource[] = [
