@@ -5,19 +5,20 @@ import { Type } from "./types";
 import { User } from "./users";
 
 export type Ressource = {
-  id_ressource: number;
+  "@id": string;
+  "@type": string;
+  id: number;
   titre: string;
   contenu: string;
+
+  categories: Categorie[];
+  medias: string[];
+  commentaires: string[];
+  tagsRessources: string[];
+  utilisateur: string;
+
+  dateCreation: string;
+  estVisible: boolean;
   valide: boolean;
-  active: boolean;
-  date_creation: string;
-  date_modification: string;
-  visibilite: "PUBLIC" | "PRIVE";
-  type: Type;
-  auteur: User;
-  categorie: Categorie ;
-  tags: Tag[];
-  medias: Media[];
-  adore_count: number;
-  is_favorite: boolean;
+  visibilite: string;
 };

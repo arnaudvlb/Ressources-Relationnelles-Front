@@ -1,13 +1,16 @@
 import { Ressource } from "@/types/database/ressources";
 
+type Collection<T> = {
+  member?: T[];
+  "hydra:member"?: T[];
+};
+
 export default async function getRessources(): Promise<Ressource[]> {
-  const response = await fetch("/api/ressources");
+  const res = await fetch("/api/ressources");
+  if (!res.ok) throw new Error(`Erreur API: ${res.status}`);
 
-  if (!response.ok) {
-    throw new Error(`Erreur lors de la récupération des ressources (getRessources) : ${response.status}`);
-  }
+  const data: Collection<Ressource> = await res.json();
+  const items = data.member ?? data["hydra:member"] ?? [];
 
-  const data = await response.json();
-
-  return data;
+  return items;
 }

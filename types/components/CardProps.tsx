@@ -1,8 +1,5 @@
+import { Ressource } from "@/types/database/ressources";
+
 export type CardProps = {
-  resources: {
-    id: number;
-    titre: string;
-    contenu: string;
-    libelleCategorie: string;
-  }[];
+  resources: Ressource[];
 };
