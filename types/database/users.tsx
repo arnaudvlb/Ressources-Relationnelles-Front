@@ -1,9 +1,10 @@
 import { Role } from "./roles";
 
 export type User= {
-   id_utilisateur: number;
+  id_utilisateur: number;
 
   nom: string;
+  
   prenom: string;
 
   telephone: string | null;
