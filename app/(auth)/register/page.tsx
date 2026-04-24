@@ -7,6 +7,7 @@ export default function RegisterPage() {
     <AuthForm
       titreForm="Créer un compte"
       champs={["Prénom", "Nom", "Pseudo", "Email", "Téléphone", "Mot de passe"]}
+      names={[]}
       buttonText="S'inscrire"
       placeholders={[
         "Prénom",

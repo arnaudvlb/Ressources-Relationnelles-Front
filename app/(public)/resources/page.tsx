@@ -8,7 +8,6 @@ export default function ResourcesPage() {
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
-console.log(resources);
   return (
     <main className="resources-page">
       <h1 className="resources-title">Ressources</h1>
