@@ -10,18 +10,17 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleSubmit = async (formData: Record<string, string>) => {
-  console.log("FORM DATA:", formData);
-  const res = await loginUser({
-    email: formData.email,
-    password: formData.password,
-  });
+    const res = await loginUser({
+      email: formData.email,
+      password: formData.password,
+    });
 
-  if (res) {
-    router.push("/resources");
-  }
+    if (res) {
+      router.push("/resources");
+    }
 
-  if (error) return <p>Erreur : {error}</p>;
-};
+    if (error) return <p>Erreur : {error}</p>;
+  };
 
   return (
     <AuthForm
