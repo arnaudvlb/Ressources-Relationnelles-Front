@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AuthForm from "@/components/AuthForm/AuthForm";
 import { useLogin } from "@/hooks/useLogin";
+import FormMessage from "@/components/ui/FormMessage/FormMessage";
 
 export default function LoginPage() {
+  const [message, setMessage] = useState("");
   const { loginUser, loading, error } = useLogin();
   const router = useRouter();
 
@@ -16,28 +19,34 @@ export default function LoginPage() {
     });
 
     if (res) {
-      router.push("/resources");
+      setMessage("Connexion réussie !");
+      setTimeout(() => {
+        router.push("/resources");
+      }, 1500);
     }
-
-    if (error) return <p>Erreur : {error}</p>;
   };
 
   return (
-    <AuthForm
-      titreForm="Connexion"
-      champs={["Email", "Mot de passe"]}
-      names={["email", "password"]}
-      buttonText={loading ? "Connexion..." : "Se connecter"}
-      placeholders={["exemple@email.com", "••••••••"]}
-      onSubmit={handleSubmit}
-      footerContent={
-        <>
-          <span>Pas encore de compte ? </span>
-          <Link href="/register" className="link">
-            Créer un compte
-          </Link>
-        </>
-      }
-    />
+    <>
+      {(message || error) && (
+        <FormMessage message={message || error || ""} error={!!error} />
+      )}
+      <AuthForm
+        titreForm="Connexion"
+        champs={["Email", "Mot de passe"]}
+        names={["email", "password"]}
+        buttonText={loading ? "Connexion..." : "Se connecter"}
+        placeholders={["exemple@email.com", "••••••••"]}
+        onSubmit={handleSubmit}
+        footerContent={
+          <>
+            <span>Pas encore de compte ? </span>
+            <Link href="/register" className="link">
+              Créer un compte
+            </Link>
+          </>
+        }
+      />
+    </>
   );
 }
