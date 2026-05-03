@@ -1,0 +1,17 @@
+
+/* ===================== PAGE ===================== */
+
+.resourcePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+/* ===================== LAYOUT ===================== */
+
+.resourceLayout {
+  display: grid;
+  grid-template-columns: 2fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
