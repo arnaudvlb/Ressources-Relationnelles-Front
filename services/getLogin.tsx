@@ -14,7 +14,7 @@ export default async function getLogin(
   email: string,
   password: string
 ): Promise<LoginData> {
-  const res = await fetch("http://localhost:8000/login_check", {
+  const res = await fetch("/api/login_check", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
