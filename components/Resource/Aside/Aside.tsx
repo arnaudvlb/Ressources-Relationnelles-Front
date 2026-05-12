@@ -3,9 +3,20 @@
 import styles from "@/components/Resource/Aside/Aside.module.css";
 import { AsideProps } from "@/types/components/resource/AsideProps";
 
-export default function Aside({ tagsRessources, categories }: AsideProps) {
+export default function Aside({ adorers, partages, tagsRessources, categories }: AsideProps) {
   return (
     <aside className={styles.resourceAside}>
+      <div className={styles.actions}>
+        <button className={styles.actionBtn}>
+          <span>❤️</span>
+          <span>{adorers}</span>
+        </button>
+
+        <button className={styles.actionBtn}>
+          <span>🔗</span>
+          <span>{partages}</span>
+        </button>
+      </div>
       <div className={styles.resourceCard}>
         <strong>Tags</strong>
         <div className={styles.tags}>

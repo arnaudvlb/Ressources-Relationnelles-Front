@@ -25,6 +25,8 @@ export default function Page({ resource }: PageProps) {
         <Content contenu={resource.contenu} medias={resource.medias} />
 
         <Aside
+          adorers={resource.adorers.length}
+          partages={resource.partages.length}
           tagsRessources={resource.tagsRessources}
           categories={resource.categories}
         />

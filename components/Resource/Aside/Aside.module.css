@@ -4,6 +4,37 @@
   gap: 1rem;
 }
 
+/* ===================== ACTION BUTTONS ===================== */
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+
+  border: 1px solid var(--border);
+  background: var(--bg);
+
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+  color: var(--text)
+}
+
+.actionBtn:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
 .resourceCard {
   background: var(--bg);
   border: 1px solid var(--border);
