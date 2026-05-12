@@ -18,7 +18,7 @@ export default function Page({ resource }: PageProps) {
         titre={resource.titre}
         utilisateur={`${resource.utilisateur.prenom} ${resource.utilisateur.nom}`}
         dateCreation={resource.dateCreation}
-        vues={0}
+        vues={resource.consultations.length}
       />
 
       <div className={styles.resourceLayout}>
