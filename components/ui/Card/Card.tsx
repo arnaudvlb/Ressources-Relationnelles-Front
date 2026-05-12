@@ -1,6 +1,7 @@
 "use client";
 
 import { CardProps } from "@/types/components/CardProps";
+import Link from "next/link";
 import styles from "@/components/ui/Card/Card.module.css";
 
 export default function Card({ resources }: Readonly<CardProps>) {
@@ -8,7 +9,7 @@ export default function Card({ resources }: Readonly<CardProps>) {
     <div className={styles.cardGrid}>
       {resources.map((resource) => (
         <article key={resource.id} className={styles.card}>
-          <div className={styles.cardContent}>
+          <Link href={`/resource/${resource.id}`} className={styles.cardContent}>
             <span
               className={styles.cardLibelleCategorie}
               style={{ color: resource.categories[0].couleur }}
@@ -19,7 +20,7 @@ export default function Card({ resources }: Readonly<CardProps>) {
             <h2 className={styles.cardTitre}>{resource.titre}</h2>
 
             <p className={styles.cardContenu}>{resource.contenu}</p>
-          </div>
+          </Link>
         </article>
       ))}
     </div>
