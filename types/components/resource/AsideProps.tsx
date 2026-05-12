@@ -1,5 +1,10 @@
+import { Adorer } from "@/types/database/adorers";
+import { Categorie } from "@/types/database/categories";
+import { Tag } from "@/types/database/tags";
+
 export type AsideProps = {
-  utilisateur: string;
-  tagsRessources: string[];
-  categories: string[];
+  adorers: number;
+  partages: number;
+  tagsRessources: Tag[];
+  categories: Categorie[];
 };
