@@ -14,8 +14,8 @@ export type Ressource = {
   categories: Categorie[];
   medias: string[];
   commentaires: string[];
-  tagsRessources: string[];
-  utilisateur: string;
+  tagsRessources: Tag[];
+  utilisateur: User;
 
   dateCreation: string;
   estVisible: boolean;

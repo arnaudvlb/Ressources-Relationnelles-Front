@@ -1,5 +1,7 @@
+import { Categorie } from "@/types/database/categories";
+import { Tag } from "@/types/database/tags";
+
 export type AsideProps = {
-  utilisateur: string;
-  tagsRessources: string[];
-  categories: string[];
+  tagsRessources: Tag[];
+  categories: Categorie[];
 };
