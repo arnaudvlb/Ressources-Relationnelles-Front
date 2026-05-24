@@ -15,8 +15,6 @@ export default function Comment({ commentaires }: CommentProps) {
 
   const getEnfants = (id: number) =>
     enfants.filter((commentaire) => commentaire.commentaireParentId === id);
-
-  console.log(commentaires);
   return (
     <div>
       <div className={styles.resourceComments}>
