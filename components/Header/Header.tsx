@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
-
+  const { isAuth } = useAuth();
+  
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -51,7 +53,6 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
-  // TODO: A fix pour régler le bug du double menu
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
@@ -62,7 +63,18 @@ export default function Header() {
         <div className={styles.navContainer}>
           <ul>
             <li><Link href="/">Accueil</Link></li>
-            <li><Link href="/login">Connexion</Link></li>
+            {!isAuth && (
+              <li>
+                <Link href="/login">Connexion</Link>
+              </li>
+            )}
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/logout">Déconnexion</Link>
+                </li>
+              </>
+            )}
             <li><Link href="/resources">Ressources</Link></li>
           </ul>
 
@@ -79,7 +91,18 @@ export default function Header() {
         <div className={`${styles.mobileWrapper} ${menuOpen ? styles.open : ""}`}>
           <ul className={styles.mobileMenu}>
             <li><Link href="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
-            <li><Link href="/login" onClick={() => setMenuOpen(false)}>Connexion</Link></li>
+            {!isAuth && (
+              <li>
+                <Link href="/login" onClick={() => setMenuOpen(false)}>Connexion</Link>
+              </li>
+            )}
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/logout" onClick={() => setMenuOpen(false)}>Déconnexion</Link>
+                </li>
+              </>
+            )}
             <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
           </ul>
         </div>

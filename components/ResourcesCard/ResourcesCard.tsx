@@ -3,8 +3,16 @@
 import { ResourcesCardProps } from "@/types/components/ResourcesCardProps";
 import Link from "next/link";
 import styles from "@/components/ResourcesCard/ResourcesCard.module.css";
+import EditButton from "../ui/EditButton/EditButton";
+import { useAuth } from "@/hooks/useAuth";
+
+function truncate(text: string, max: number) {
+  return text?.length > max ? text.slice(0, max) + "..." : text;
+}
 
 export default function ResourcesCard({ resources }: Readonly<ResourcesCardProps>) {
+  const { isAuth, isAdmin, userName } = useAuth();
+
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => (
@@ -19,8 +27,13 @@ export default function ResourcesCard({ resources }: Readonly<ResourcesCardProps
 
             <h2 className={styles.cardTitre}>{resource.titre}</h2>
 
-            <p className={styles.cardContenu}>{resource.contenu}</p>
+            <p className={styles.cardContenu}>{truncate(resource.contenu , 50)}</p>
           </Link>
+          {(isAdmin || (isAuth && userName == resource.utilisateur.pseudo))  && (
+          <div className={styles.resourcesActions}>
+            <EditButton url=""/>
+          </div>
+          )}
         </article>
       ))}
     </div>

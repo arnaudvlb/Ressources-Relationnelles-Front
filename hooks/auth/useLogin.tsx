@@ -30,8 +30,7 @@ export function useLogin() {
 
       setData(result);
 
-      document.cookie = `token=${result.token}; path=/`;
-      document.cookie = `user=${JSON.stringify(result.user)}; path=/`;
+      localStorage.setItem("token", `${result.token}`);
 
       return result;
     } catch (err: any) {
