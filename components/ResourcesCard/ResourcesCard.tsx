@@ -5,19 +5,27 @@ import Link from "next/link";
 import styles from "@/components/ResourcesCard/ResourcesCard.module.css";
 import EditButton from "../ui/EditButton/EditButton";
 import { useAuth } from "@/hooks/useAuth";
+import DeleteButton from "../ui/DeleteButton/DeleteButton";
+import { useDeleteRessource } from "@/hooks/ressources/useDeleteRessource";
 
 function truncate(text: string, max: number) {
   return text?.length > max ? text.slice(0, max) + "..." : text;
 }
 
-export default function ResourcesCard({ resources }: Readonly<ResourcesCardProps>) {
+export default function ResourcesCard({
+  resources,
+}: Readonly<ResourcesCardProps>) {
   const { isAuth, isAdmin, userName } = useAuth();
+  const { deleteRessource } = useDeleteRessource(0);
 
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => (
         <article key={resource.id} className={styles.card}>
-          <Link href={`/resource/${resource.id}`} className={styles.cardContent}>
+          <Link
+            href={`/resource/${resource.id}`}
+            className={styles.cardContent}
+          >
             <span
               className={styles.cardLibelleCategorie}
               style={{ color: resource.categories[0].couleur }}
@@ -27,12 +35,19 @@ export default function ResourcesCard({ resources }: Readonly<ResourcesCardProps
 
             <h2 className={styles.cardTitre}>{resource.titre}</h2>
 
-            <p className={styles.cardContenu}>{truncate(resource.contenu , 50)}</p>
+            <p className={styles.cardContenu}>
+              {truncate(resource.contenu, 35)}
+            </p>
           </Link>
-          {(isAdmin || (isAuth && userName == resource.utilisateur.pseudo))  && (
-          <div className={styles.resourcesActions}>
-            <EditButton url=""/>
-          </div>
+          {(isAdmin || (isAuth && userName == resource.utilisateur.pseudo)) && (
+            <div className={styles.resourcesActions}>
+              <EditButton url="" />
+              <DeleteButton
+                onConfirm={async () => {
+                  await deleteRessource(resource.id);
+                }}
+              />
+            </div>
           )}
         </article>
       ))}
