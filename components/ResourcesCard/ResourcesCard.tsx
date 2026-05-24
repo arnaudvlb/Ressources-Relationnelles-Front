@@ -1,10 +1,10 @@
 "use client";
 
-import { CardProps } from "@/types/components/CardProps";
+import { ResourcesCardProps } from "@/types/components/ResourcesCardProps";
 import Link from "next/link";
-import styles from "@/components/ui/Card/Card.module.css";
+import styles from "@/components/ResourcesCard/ResourcesCard.module.css";
 
-export default function Card({ resources }: Readonly<CardProps>) {
+export default function ResourcesCard({ resources }: Readonly<ResourcesCardProps>) {
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => (

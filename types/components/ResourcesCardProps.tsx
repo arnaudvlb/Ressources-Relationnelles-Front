@@ -1,5 +1,5 @@
 import { Ressource } from "@/types/database/ressources";
 
-export type CardProps = {
+export type ResourcesCardProps = {
   resources: Ressource[];
 };

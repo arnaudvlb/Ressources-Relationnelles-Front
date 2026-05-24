@@ -75,6 +75,39 @@ input:focus {
   border-color: var(--primary);
 }
 
+
+select {
+  padding: 0.75rem 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-size: 0.95rem;
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+select::placeholder {
+  color: #9ca3af;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.08);
+
+  transform: translateY(-1px);
+}
+
 /* =====================
    LINKS
 ===================== */
