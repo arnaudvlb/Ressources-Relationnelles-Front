@@ -1,9 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-
 import Page from "@/components/Resource/Page/Page";
-
 import { useRessource } from "@/hooks/useRessource";
 
 export default function ResourcePage() {

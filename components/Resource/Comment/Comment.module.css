@@ -1,0 +1,83 @@
+.resourceComments {
+  margin-top: 3rem;
+}
+
+.commentCard {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--bg);
+}
+
+.commentForm,
+.replyForm {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.commentInput {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+.commentBtn {
+  padding: 0.6rem 0.9rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+
+  background: var(--primary);
+  color: white;
+
+  cursor: pointer;
+}
+
+.commentBtn:hover {
+  opacity: 0.7;
+}
+
+.commentRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.replyBtn {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+
+  background: transparent;
+  border: none;
+  color: var(--primary);
+
+  cursor: pointer;
+}
+
+.replyBtn:hover {
+  opacity: 0.7;
+}
+
+.replies {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.replyItem {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+

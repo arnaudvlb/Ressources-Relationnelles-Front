@@ -4,6 +4,7 @@ import BackButton from "@/components/ui/BackButton/BackButton";
 import Header from "@/components/Resource/Header/Header";
 import Aside from "@/components/Resource/Aside/Aside";
 import Content from "@/components/Resource/Content/Content";
+import Comment from "@/components/Resource/Comment/Comment";
 import { PageProps } from "@/types/components/resource/PageProps";
 import styles from "@/components/Resource/Page/Page.module.css"
 
@@ -30,6 +31,8 @@ export default function Page({ resource }: PageProps) {
           tagsRessources={resource.tagsRessources}
           categories={resource.categories}
         />
+
+        <Comment commentaires={resource.commentaires} />
       </div>
     </div>
   );

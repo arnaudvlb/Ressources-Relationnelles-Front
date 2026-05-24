@@ -1,5 +1,6 @@
 import { Adorer } from "./adorers";
 import { Categorie } from "./categories";
+import { Commentaire } from "./commentaires";
 import { Consultation } from "./consultations";
 import { Media } from "./medias";
 import { Partage } from "./partages";
@@ -17,7 +18,7 @@ export type Ressource = {
   categories: Categorie[];
   medias: string[];
   consultations: Consultation[];
-  commentaires: string[];
+  commentaires: Commentaire[];
   partages: Partage[];
   adorers: Adorer[];
   tagsRessources: Tag[];

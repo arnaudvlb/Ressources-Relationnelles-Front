@@ -1,5 +1,5 @@
 export type Tag = {
-  id_tag: number;
+  id: number;
   libelle: string;
   couleur: string;
 };
