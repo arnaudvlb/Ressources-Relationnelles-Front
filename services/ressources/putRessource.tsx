@@ -5,6 +5,7 @@ export default async function putRessource(
   titre: string,
   contenu: string,
   estVisible: boolean,
+  visibilite: string,
 ): Promise<Ressource> {
   const res = await fetch(`/api/ressources/${id}`, {
     method: "PUT",
@@ -16,6 +17,7 @@ export default async function putRessource(
       titre,
       contenu,
       estVisible,
+      visibilite,
     }),
   });
 

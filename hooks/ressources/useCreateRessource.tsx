@@ -6,6 +6,7 @@ type FormData = {
   titre: string;
   contenu: string;
   estVisible: boolean;
+  visibilite: string;
 };
 
 export function useCreateRessource() {
@@ -21,7 +22,8 @@ export function useCreateRessource() {
       const result = await createRessourceService(
         formData.titre,
         formData.contenu,
-        formData.estVisible
+        formData.estVisible,
+        formData.visibilite,
       );
 
       setData(result);

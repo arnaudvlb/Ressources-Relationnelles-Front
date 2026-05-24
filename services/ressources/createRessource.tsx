@@ -4,6 +4,7 @@ export default async function createRessource(
   titre: string,
   contenu: string,
   estVisible: boolean,
+  visibilite: string
 ): Promise<Ressource> {
   const res = await fetch("/api/ressources", {
     method: "POST",
@@ -15,6 +16,7 @@ export default async function createRessource(
       titre,
       contenu,
       estVisible,
+      visibilite
     }),
   });
 

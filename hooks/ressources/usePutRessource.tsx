@@ -6,6 +6,7 @@ type FormData = {
   titre: string;
   contenu: string;
   estVisible: boolean;
+  visibilite: string;
 };
 
 export function usePutRessource(id: string) {
@@ -22,7 +23,8 @@ export function usePutRessource(id: string) {
         id,
         formData.titre,
         formData.contenu,
-        formData.estVisible
+        formData.estVisible,
+        formData.visibilite,
       );
 
       setData(result);

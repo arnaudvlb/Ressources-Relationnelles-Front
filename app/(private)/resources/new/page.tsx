@@ -2,21 +2,19 @@
 
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
-import { usePutRessource } from "@/hooks/ressources/usePutRessource";
+import { useCreateRessource } from "@/hooks/ressources/useCreateRessource";
 import { useParams, useRouter } from "next/navigation";
 
-export default function editResourcePage() {
-  const params = useParams();
-  const id = params.id as string;
-  const { putRessource, loading, error } = usePutRessource(id);
+export default function newResourcePage() {
+  const { createRessource, loading, error } = useCreateRessource();
   const router = useRouter();
 
   const handleSubmit = async (formData: Record<string, string>) => {
-    const res = await putRessource({
+    const res = await createRessource({
       titre: formData.titre,
       contenu: formData.Contenu,
       estVisible : true,
-      visibilite : "public",
+      visibilite: "public",
     });
 
     if (res) {

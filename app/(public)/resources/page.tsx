@@ -1,12 +1,15 @@
 "use client";
 
 import ResourcesCard from "@/components/ResourcesCard/ResourcesCard";
+import CreateButton from "@/components/ui/CreateButton/CreateButton";
 import Filter from "@/components/ui/Filter/Filter";
 import { useRessources } from "@/hooks/ressources/useRessources";
+import { useAuth } from "@/hooks/useAuth";
 import { useState } from "react";
 
 export default function ResourcesPage() {
   const { resources, loading, error } = useRessources();
+  const { isAuth } = useAuth();
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("all");
 
@@ -40,6 +43,9 @@ export default function ResourcesPage() {
         ]}
       />
       <ResourcesCard resources={filteredResources} />
+      {isAuth && (
+        <CreateButton url="/resources/new"/>
+      )}
     </main>
   );
 }
