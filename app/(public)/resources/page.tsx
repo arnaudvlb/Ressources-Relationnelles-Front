@@ -2,7 +2,7 @@
 
 import ResourcesCard from "@/components/ResourcesCard/ResourcesCard";
 import Filter from "@/components/ui/Filter/Filter";
-import { useRessources } from "@/hooks/resources/useRessources";
+import { useRessources } from "@/hooks/ressources/useRessources";
 import { useState } from "react";
 
 export default function ResourcesPage() {
