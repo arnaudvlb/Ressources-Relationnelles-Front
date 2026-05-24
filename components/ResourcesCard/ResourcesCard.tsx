@@ -41,7 +41,7 @@ export default function ResourcesCard({
           </Link>
           {(isAdmin || (isAuth && userName == resource.utilisateur.pseudo)) && (
             <div className={styles.resourcesActions}>
-              <EditButton url="" />
+              <EditButton url={`/resource/edit/${resource.id}`} />
               <DeleteButton
                 onConfirm={async () => {
                   await deleteRessource(resource.id);
