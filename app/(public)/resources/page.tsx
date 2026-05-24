@@ -1,7 +1,7 @@
 "use client";
 
 import Card from "@/components/ui/Card/Card";
-import { useRessources } from "@/hooks/useRessources";
+import { useRessources } from "@/hooks/resources/useRessources";
 
 export default function ResourcesPage() {
   const { resources, loading, error } = useRessources();

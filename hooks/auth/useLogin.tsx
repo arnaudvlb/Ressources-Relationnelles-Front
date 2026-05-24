@@ -1,5 +1,5 @@
 import { useState } from "react";
-import getLogin from "@/services/getLogin";
+import getLogin from "@/services/auth/getLogin";
 import { User } from "@/types/database/users";
 import { Token } from "@/types/database/tokens";
 

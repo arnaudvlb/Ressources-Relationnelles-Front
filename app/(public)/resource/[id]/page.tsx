@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Page from "@/components/Resource/Page/Page";
-import { useRessource } from "@/hooks/useRessource";
+import { useRessource } from "@/hooks/resources/useRessource";
 
 export default function ResourcePage() {
   const params = useParams();

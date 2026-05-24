@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getRessource from "@/services/getRessource";
+import getRessource from "@/services/resources/getRessource";
 import { Ressource } from "@/types/database/ressources";
 
 export function useRessource(id: string) {
