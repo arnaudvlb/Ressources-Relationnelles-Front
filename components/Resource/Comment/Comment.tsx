@@ -6,15 +6,16 @@ export default function Comment({ commentaires }: CommentProps) {
   const [replyToId, setReplyToId] = useState<number | null>(null);
 
   const parents = commentaires.filter(
-    (commentaire) => commentaire.commentaireParentId === null,
+    (commentaire) => commentaire.commentaireParentId == null
   );
 
   const enfants = commentaires.filter(
-    (commentaire) => commentaire.commentaireParentId !== null,
+    (commentaire) => commentaire.commentaireParentId != null
   );
 
   const getEnfants = (id: number) =>
     enfants.filter((commentaire) => commentaire.commentaireParentId === id);
+
   return (
     <div>
       <div className={styles.resourceComments}>
@@ -29,6 +30,7 @@ export default function Comment({ commentaires }: CommentProps) {
           <button className={styles.commentBtn}>Envoyer</button>
         </div>
       </div>
+
       {parents.map((parent) => (
         <div key={parent.id} className={styles.commentCard}>
           <div className={styles.commentRow}>

@@ -7,5 +7,6 @@ export type Commentaire = {
   dateCreation: string;
   utilisateur: User;
   ressource: Ressource;
-  commentaireParentId: number | null;
+  commentaireParent: Commentaire;
+  commentaireParentId?: number | null;
 };
