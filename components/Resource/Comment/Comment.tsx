@@ -35,7 +35,7 @@ export default function Comment({ commentaires, ressourceId }: CommentProps) {
       dateCreation: new Date().toISOString(),
       utilisateur: `/api/utilisateurs/${localStorage.getItem("userId")}`,
       resource: `/api/ressources/${ressourceId}`,
-      commentaireParent: `/api/commentaires/${commentaireParent}`,
+      commentaireParent: commentaireParent != null ? `/api/commentaires/${commentaireParent}` : null,
     });
 
     if (res) {
