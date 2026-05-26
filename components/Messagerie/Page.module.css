@@ -1,0 +1,316 @@
+.messagesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  color: #f8fafc;
+}
+
+.messagesHeader {
+  margin-bottom: 2rem;
+}
+
+.messagesHeader h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.messagesHeader p {
+  color: #94a3b8;
+}
+
+.messagesLayout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 620px;
+}
+
+.conversationList,
+.conversationPanel,
+.emptyState {
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
+}
+
+.conversationList {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.25rem 0.75rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.panelHeader h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.panelHeader span {
+  color: #93c5fd;
+  font-size: 0.9rem;
+}
+
+.conversationItem {
+  width: 100%;
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 0.9rem;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.conversationItem:hover,
+.conversationItemActive {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.avatar,
+.avatarPlaceholder {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  display: grid;
+  place-items: center;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #93c5fd;
+  font-weight: 700;
+}
+
+.conversationInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.conversationTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.conversationTop strong {
+  font-size: 0.95rem;
+}
+
+.conversationTop span {
+  font-size: 0.75rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.friendName {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.lastMessage {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conversationPanel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.conversationHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.conversationHeader h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.conversationHeader p {
+  margin: 0.2rem 0 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.backMobileButton {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #f8fafc;
+  cursor: pointer;
+}
+
+.messagesContainer {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.messageRow {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.messageRowMine {
+  justify-content: flex-end;
+}
+
+.messageBubble {
+  max-width: 70%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 1rem;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.messageBubbleMine {
+  background: #1e3a5f;
+  border-color: #2563eb;
+}
+
+.messageBubble p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.messageBubble span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.messageForm {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-top: 1px solid #1e293b;
+}
+
+.messageForm input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.messageForm input::placeholder {
+  color: #64748b;
+}
+
+.messageForm button {
+  padding: 0.85rem 1.2rem;
+  border: none;
+  border-radius: 0.8rem;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.messageForm button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.noConversation,
+.emptyState {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  color: #94a3b8;
+}
+
+.noConversation h2,
+.emptyState h1 {
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.emptyText {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  padding: 1rem 0.25rem;
+}
+
+.formError {
+  padding: 0 1rem 1rem;
+  color: #f87171;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .messagesPage {
+    padding: 1.5rem 1rem;
+  }
+
+  .messagesLayout {
+    display: block;
+    min-height: auto;
+  }
+
+  .conversationList,
+  .conversationPanel {
+    min-height: 600px;
+  }
+
+  .messagesLayout.hasSelectedConversation .conversationList {
+    display: none;
+  }
+
+  .messagesLayout:not(.hasSelectedConversation) .conversationPanel {
+    display: none;
+  }
+
+  .backMobileButton {
+    display: block;
+  }
+
+  .messageBubble {
+    max-width: 85%;
+  }
+
+  .messageForm {
+    flex-direction: column;
+  }
+}

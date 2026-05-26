@@ -75,6 +75,14 @@ export default function Header() {
                 </li>
               </>
             )}
+
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/messagerie">Messagerie</Link>
+                </li>
+              </>
+            )}
             <li><Link href="/resources">Ressources</Link></li>
           </ul>
 
@@ -100,6 +108,14 @@ export default function Header() {
               <>
                 <li>
                   <Link href="/logout" onClick={() => setMenuOpen(false)}>Déconnexion</Link>
+                </li>
+              </>
+            )}
+
+             {isAuth && (
+              <>
+                <li>
+                  <Link href="/messagerie">Messagerie</Link>
                 </li>
               </>
             )}
