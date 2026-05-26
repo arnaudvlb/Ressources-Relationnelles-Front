@@ -29,8 +29,8 @@ export default function ResourcesPage() {
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
   return (
-    <main className="resources-page">
-      <h1 className="resources-title">Ressources</h1>
+    <main className="page">
+      <h1 className="pageTitle">Ressources</h1>
       <Filter
         value={search}
         onChange={setSearch}
