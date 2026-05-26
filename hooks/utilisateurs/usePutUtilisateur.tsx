@@ -1,5 +1,5 @@
 import { useState } from "react";
-import patchUtilisateurService from "@/services/utilisateurs/patchUtilisateur";
+import putUtilisateurService from "@/services/utilisateurs/putUtilisateur";
 import { User } from "@/types/database/users";
 
 type FormData = {
@@ -10,17 +10,17 @@ type FormData = {
   password: string | null;
 };
 
-export function usePatchUtilisateur(id: string) {
+export function usePutUtilisateur(id: string) {
   const [data, setData] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const patchUtilisateur = async (formData: FormData) => {
+  const putUtilisateur = async (formData: FormData) => {
     setLoading(true);
     setError(null);
 
     try {
-      const result = await patchUtilisateurService(
+      const result = await putUtilisateurService(
         id,
         formData.nom,
         formData.prenom,
@@ -40,5 +40,5 @@ export function usePatchUtilisateur(id: string) {
     }
   };
 
-  return { data, loading, error, patchUtilisateur };
+  return { data, loading, error, putUtilisateur };
 }

@@ -1,6 +1,6 @@
 import { User } from "@/types/database/users";
 
-export default async function patchUtilisateur(
+export default async function putUtilisateur(
   id: string,
   nom: string,
   prenom: string,
@@ -9,7 +9,7 @@ export default async function patchUtilisateur(
   password: string | null,
 ): Promise<User> {
   const res = await fetch(`/api/utilisateurs/${id}`, {
-    method: "PATCH",
+    method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/merge-patch+json",
