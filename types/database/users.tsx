@@ -1,7 +1,7 @@
 import { Role } from "./roles";
 
 export type User= {
-  id_utilisateur: number;
+  id: number;
 
   nom: string;
   

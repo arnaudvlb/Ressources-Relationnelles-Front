@@ -3,10 +3,12 @@
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
 import { useCreateRessource } from "@/hooks/ressources/useCreateRessource";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function newResourcePage() {
   const { createRessource, loading, error } = useCreateRessource();
+  const [formData, setFormData] = useState<Record<string, string>>({});
   const router = useRouter();
 
   const handleSubmit = async (formData: Record<string, string>) => {

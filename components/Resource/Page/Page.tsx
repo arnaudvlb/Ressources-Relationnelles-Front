@@ -32,7 +32,7 @@ export default function Page({ resource }: PageProps) {
           categories={resource.categories}
         />
 
-        <Comment commentaires={resource.commentaires} />
+        <Comment commentaires={resource.commentaires} ressourceId={resource.id} />
       </div>
     </div>
   );

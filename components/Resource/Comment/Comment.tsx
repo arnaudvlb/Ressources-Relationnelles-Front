@@ -1,34 +1,65 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import styles from "@/components/Resource/Comment/Comment.module.css";
 import { CommentProps } from "@/types/components/resource/CommentProps";
+import { useCreateCommentaire } from "@/hooks/commentaires/useCreateCommentaire";
+import Button from "@/components/ui/Button/Button";
 
-export default function Comment({ commentaires }: CommentProps) {
+export default function Comment({ commentaires, ressourceId }: CommentProps) {
   const [replyToId, setReplyToId] = useState<number | null>(null);
+  const { createCommentaire } = useCreateCommentaire();
 
   const parents = commentaires.filter(
-    (commentaire) => commentaire.commentaireParentId == null
+    (commentaire) => commentaire.commentaireParentId == null,
   );
 
   const enfants = commentaires.filter(
-    (commentaire) => commentaire.commentaireParentId != null
+    (commentaire) => commentaire.commentaireParentId != null,
   );
 
   const getEnfants = (id: number) =>
     enfants.filter((commentaire) => commentaire.commentaireParentId === id);
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    commentaireParent: number | null = null,
+  ) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const contenu = String(formData.get("contenu") ?? "");
+    
+    if (!contenu) return;
+    
+    const res = await createCommentaire({
+      contenu,
+      dateCreation: new Date().toISOString(),
+      utilisateur: `/api/utilisateurs/${localStorage.getItem("userId")}`,
+      resource: `/api/ressources/${ressourceId}`,
+      commentaireParent: `/api/commentaires/${commentaireParent}`,
+    });
+
+    if (res) {
+      location.reload();
+    }
+  };
 
   return (
     <div>
       <div className={styles.resourceComments}>
         <h3>Commentaires</h3>
 
-        <div className={styles.commentForm}>
+        <form
+          className={styles.commentForm}
+          onSubmit={(e) => handleSubmit(e, null)}
+        >
           <input
+            name="contenu"
             className={styles.commentInput}
             placeholder="Écrire un commentaire..."
           />
 
-          <button className={styles.commentBtn}>Envoyer</button>
-        </div>
+          <Button text={"Envoyer"} />
+        </form>
       </div>
 
       {parents.map((parent) => (
@@ -47,13 +78,17 @@ export default function Comment({ commentaires }: CommentProps) {
           </div>
 
           {replyToId === parent.id && (
-            <div className={styles.replyForm}>
+            <form
+              className={styles.replyForm}
+              onSubmit={(e) => handleSubmit(e, parent.id)}
+            >
               <input
+                name="contenu"
                 className={styles.commentInput}
                 placeholder="Écrire une réponse..."
               />
-              <button className={styles.commentBtn}>Répondre</button>
-            </div>
+              <Button text={"Répondre"} />
+            </form>
           )}
 
           <div className={styles.replies}>

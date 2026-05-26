@@ -7,7 +7,7 @@ type FormData = {
   dateCreation: string;
   utilisateur: string;
   resource: string;
-  commentaireParent: number | null;
+  commentaireParent: string | null;
 };
 
 export function useCreateCommentaire() {

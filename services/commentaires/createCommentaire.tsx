@@ -5,7 +5,7 @@ export default async function createCommentaire(
   dateCreation: string,
   utilisateur: string,
   resource: string,
-  commentaireParent: number | null
+  commentaireParent: string | null
 ): Promise<Commentaire> {
   const res = await fetch("/api/commentaires", {
     method: "POST",
