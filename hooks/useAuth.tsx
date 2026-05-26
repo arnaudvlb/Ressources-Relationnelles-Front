@@ -11,6 +11,7 @@ function parseJwt(token: string) {
 export function useAuth() {
   const [isAuth, setIsAuth] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isModo, setIsModo] = useState(false);
   const [userName, setUserName] = useState<string | null>();
 
   const syncAuth = () => {
@@ -22,9 +23,14 @@ export function useAuth() {
       const payload = parseJwt(token);
 
       setIsAdmin(payload?.roles.includes("ROLE_ADMIN"));
-      setUserName(payload?.username)
+      setIsModo(
+        payload?.roles.includes("ROLE_MODERATEUR") ||
+          payload?.roles.includes("ROLE_ADMIN"),
+      );
+      setUserName(payload?.username);
     } else {
       setIsAdmin(false);
+      setIsModo(false);
     }
   };
 
@@ -41,6 +47,7 @@ export function useAuth() {
   return {
     isAuth,
     isAdmin,
-    userName
+    isModo,
+    userName,
   };
 }
