@@ -4,9 +4,14 @@ export default async function putUtilisateur(
   id: string,
   nom: string,
   prenom: string,
-  email: string | null,
-  role: string | null,
-  password: string | null,
+  telephone: string,
+  email: string,
+  pseudo: string,
+  photoProfil: string,
+  statusCompte: boolean,
+  dateCreation: string,
+  role: string,
+  plainPassword: string
 ): Promise<User> {
   const res = await fetch(`/api/utilisateurs/${id}`, {
     method: "PUT",
@@ -17,15 +22,22 @@ export default async function putUtilisateur(
     body: JSON.stringify({
       nom,
       prenom,
+      telephone,
       email,
+      pseudo,
+      photoProfil,
+      statusCompte,
+      dateCreation,
       role,
-      password,
+      plainPassword
     }),
   });
 
   if (!res.ok) {
     if (res.status === 400) {
-      throw new Error("Données invalides. (Veuillez remplir l'email et le mot de passe.)");
+      throw new Error(
+        "Données invalides. (Veuillez remplir l'email et le mot de passe.)",
+      );
     } else if (res.status === 403) {
       throw new Error("Accès non autorisé.");
     } else if (res.status === 404) {

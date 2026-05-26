@@ -3,11 +3,17 @@ import putUtilisateurService from "@/services/utilisateurs/putUtilisateur";
 import { User } from "@/types/database/users";
 
 type FormData = {
+  id: number;
   nom: string;
   prenom: string;
-  email: string | null;
+  telephone: string;
+  email: string;
+  pseudo: string;
+  photoProfil: string;
+  statusCompte: boolean;
+  dateCreation: string;
   role: string;
-  password: string | null;
+  plainPassword: string;
 };
 
 export function usePutUtilisateur(id: string) {
@@ -24,9 +30,14 @@ export function usePutUtilisateur(id: string) {
         id,
         formData.nom,
         formData.prenom,
+        formData.telephone,
         formData.email,
+        formData.pseudo,
+        formData.photoProfil,
+        formData.statusCompte,
+        formData.dateCreation,
         formData.role,
-        formData.password,
+        formData.plainPassword,
       );
 
       setData(result);
