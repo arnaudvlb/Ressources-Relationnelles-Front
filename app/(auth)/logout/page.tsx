@@ -8,6 +8,7 @@ export default function LogOutPage() {
 
   setTimeout(() => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     window.dispatchEvent(new Event("auth-change"));
     router.push("/login");
   }, 1500);
