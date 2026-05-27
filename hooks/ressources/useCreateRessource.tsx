@@ -5,8 +5,12 @@ import { Ressource } from "@/types/database/ressources";
 type FormData = {
   titre: string;
   contenu: string;
-  estVisible: boolean;
+  valide: boolean;
+  date_creation: string;
   visibilite: string;
+  utilisateur: number;
+  categorie: string;
+  tags: string[];
 };
 
 export function useCreateRessource() {
@@ -22,8 +26,12 @@ export function useCreateRessource() {
       const result = await createRessourceService(
         formData.titre,
         formData.contenu,
-        formData.estVisible,
+        formData.valide,
+        formData.date_creation,
         formData.visibilite,
+        formData.utilisateur,
+        formData.categorie,
+        formData.tags,
       );
 
       setData(result);

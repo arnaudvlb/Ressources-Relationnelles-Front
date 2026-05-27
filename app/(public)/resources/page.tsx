@@ -44,7 +44,7 @@ export default function ResourcesPage() {
       />
       <ResourcesCard resources={filteredResources} />
       {isAuth && (
-        <CreateButton url="/resources/new"/>
+        <CreateButton url="/resource/new"/>
       )}
     </main>
   );

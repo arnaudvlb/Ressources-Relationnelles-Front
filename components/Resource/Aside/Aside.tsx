@@ -30,7 +30,7 @@ export default function Aside({ adorers, partages, tagsRessources, categories }:
 
       <div className={styles.resourceCard}>
         <strong>Catégories</strong>
-        {categories.map((categorie, i) => (
+        {categories?.map((categorie, i) => (
           <p key={i} style={{ color: categorie.couleur }}>
             {categorie.libelle}
           </p>
