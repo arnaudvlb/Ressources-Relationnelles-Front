@@ -1,5 +1,5 @@
 
-import styles from "@/components/Resource/Page/Page.module.css";
+import styles from "@/components/Messagerie/Page.module.css"
 import { ConversationFormProps } from "@/types/components/messagerie/ConversationForm";
 
 export default function ConversationForm({
@@ -8,7 +8,7 @@ export default function ConversationForm({
   setMessageContent,
   sending,
   createMessageError,
-}: ConversationFormProps) {
+}: Readonly<ConversationFormProps>) {
   return (
     <>
       <form

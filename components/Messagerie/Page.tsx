@@ -102,11 +102,12 @@ export default function Page() {
 
 
     const createdMessage = await createMessage({
-        contenu: messageContent.trim(),
-        expediteur: `/api/utilisateurs/${currentUserId}`,
-        destinataire: `/api/utilisateurs/${selectedConversation.user.id}`,
-        pieceJointe: null,
-        });
+      contenu: messageContent.trim(),
+      pieceJointe: null,
+      dateEnvoie: new Date().toISOString(),
+      id_expediteur: currentUserId,
+      id_destinataire: selectedConversation.user.id,
+    });
 
     if (!createdMessage) return;
 

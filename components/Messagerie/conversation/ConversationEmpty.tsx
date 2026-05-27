@@ -1,7 +1,7 @@
 
 
 
-import styles from "@/components/Resource/Page/Page.module.css"
+import styles from "@/components/Messagerie/Page.module.css"
 export default function ConversationEmpty(){
     return(
           <div className={styles.noConversation}>

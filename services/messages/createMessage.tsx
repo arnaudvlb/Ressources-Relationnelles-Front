@@ -1,30 +1,39 @@
 import { Message } from "@/types/database/message";
-import { User } from "@/types/database/users";
 
-
-type CreateMessagePayload = {
+export type CreateMessagePayload = {
   contenu: string;
-  expediteur: string;
-  destinataire: string;
   pieceJointe?: string | null;
+  dateEnvoie: string;
+  id_expediteur: number;
+  id_destinataire: number;
 };
 
 export default async function createMessage(
   payload: CreateMessagePayload
 ): Promise<Message> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages`, {
+  console.log("📤 createMessage payload :", payload);
+
+  const response = await fetch("/api/messages", {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
-    credentials: "include",
     body: JSON.stringify(payload),
   });
 
+  console.log("createMessage status :", response.status);
+
   if (!response.ok) {
+    const errorText = await response.text();
+    console.log(" Erreur API createMessage :", errorText);
+
     throw new Error("Impossible d’envoyer le message.");
   }
 
-  return response.json();
+  const data = await response.json();
+
+  console.log("Message créé :", data);
+
+  return data;
 }

@@ -1,9 +1,9 @@
 
 
-import styles from "@/components/Resource/Page/Page.module.css"
+import styles from "@/components/Messagerie/Page.module.css"
 import { CardMessageProps } from "@/types/components/messagerie/CardMessage"
 
-export default function CardMessage({message,IsMine,formatDate}:CardMessageProps){
+export default function CardMessage({message,IsMine,formatDate}:Readonly<CardMessageProps>){
 
     return(
         <div

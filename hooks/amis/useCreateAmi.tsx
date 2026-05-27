@@ -1,20 +1,20 @@
 import { useState } from "react";
-import createMessageService, {
-  CreateMessagePayload,
-} from "@/services/messages/createMessage";
-import { Message } from "@/types/database/message";
+import createAmiService, {
+  CreateAmiPayload,
+} from "@/services/amis/createAmi";
+import { Ami } from "@/types/database/amis";
 
-export function useCreateMessage() {
-  const [data, setData] = useState<Message | null>(null);
+export function useCreateAmi() {
+  const [data, setData] = useState<Ami | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const createMessage = async (formData: CreateMessagePayload) => {
+  const createAmi = async (formData: CreateAmiPayload) => {
     setLoading(true);
     setError(null);
 
     try {
-      const result = await createMessageService(formData);
+      const result = await createAmiService(formData);
 
       setData(result);
 
@@ -31,6 +31,6 @@ export function useCreateMessage() {
     data,
     loading,
     error,
-    createMessage,
+    createAmi,
   };
 }

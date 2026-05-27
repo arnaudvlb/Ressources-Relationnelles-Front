@@ -1,0 +1,153 @@
+.friendsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  color: #f8fafc;
+}
+
+.friendsHeader {
+  margin-bottom: 2rem;
+}
+
+.friendsHeader h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.friendsHeader p {
+  color: #94a3b8;
+}
+
+.searchCard,
+.usersList,
+.emptyState {
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
+}
+
+.searchCard {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.searchInput::placeholder {
+  color: #64748b;
+}
+
+.usersList {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.userLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.avatar,
+.avatarPlaceholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  display: grid;
+  place-items: center;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #93c5fd;
+  font-weight: 700;
+}
+
+.userCard h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.userCard p {
+  margin: 0.2rem 0;
+  color: #94a3b8;
+}
+
+.userCard span {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.addButton {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.8rem;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.addButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.emptyState {
+  padding: 2rem;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.emptyState h1 {
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.emptyText {
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .friendsPage {
+    padding: 1.5rem 1rem;
+  }
+
+  .userCard {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+}

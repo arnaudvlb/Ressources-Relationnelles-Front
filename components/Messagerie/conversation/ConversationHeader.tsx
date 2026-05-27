@@ -1,9 +1,9 @@
 
-import styles from "@/components/Resource/Page/Page.module.css";
+import styles from "@/components/Messagerie/Page.module.css"
 import { ConversationHeaderProps } from "@/types/components/messagerie/ConversationHeader";
 
 
-export default function ConversationHeader({setSelectedUserId,selectedConversation,getAvatarLetter}:ConversationHeaderProps){
+export default function ConversationHeader({setSelectedUserId,selectedConversation,getAvatarLetter}:Readonly<ConversationHeaderProps>){
 
     return(
          <div className={styles.conversationHeader}>

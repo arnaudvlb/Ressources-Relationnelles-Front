@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { useAuth } from "@/hooks/useAuth";
+import { Ami } from '../../types/database/amis';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -83,6 +84,13 @@ export default function Header() {
                 </li>
               </>
             )}
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/amis">Amis</Link>
+                </li>
+              </>
+            )}
             <li><Link href="/resources">Ressources</Link></li>
             {isAdmin && (
               <>
@@ -126,6 +134,14 @@ export default function Header() {
                 </li>
               </>
             )}
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/amis">Amis</Link>
+                </li>
+              </>
+            )}
+            
             <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
             {isAdmin && (
               <>

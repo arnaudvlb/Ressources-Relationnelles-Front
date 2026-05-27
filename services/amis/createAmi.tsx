@@ -1,0 +1,29 @@
+import { Ami } from "@/types/database/amis";
+
+export type CreateAmiPayload = {
+  statut: string;
+  dateAction: string;
+  demandeur: number;
+  ami: number;
+};
+
+
+
+export default async function createAmi(
+  payload: CreateAmiPayload
+): Promise<Ami> {
+  const res = await fetch("/api/amis", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Erreur API: ${res.status}`);
+  }
+
+  return res.json();
+}

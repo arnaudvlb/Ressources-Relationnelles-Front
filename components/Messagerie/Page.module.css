@@ -23,7 +23,7 @@
   grid-template-columns: 360px 1fr;
   gap: 2rem;
   align-items: stretch;
-  min-height: 620px;
+  min-height: 720px;
 }
 
 .conversationList,
@@ -36,53 +36,52 @@
 
 .conversationList {
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
 }
 
 .panelHeader {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 0.25rem 0.75rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid #1e293b;
 }
 
 .panelHeader h2 {
-  font-size: 1rem;
   margin: 0;
+  font-size: 1.2rem;
 }
 
 .panelHeader span {
   color: #93c5fd;
-  font-size: 0.9rem;
 }
 
 .conversationItem {
   width: 100%;
   display: flex;
-  gap: 0.85rem;
-  padding: 0.9rem;
-  border: 1px solid transparent;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #334155;
   border-radius: 0.9rem;
   background: transparent;
   color: inherit;
   text-align: left;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .conversationItem:hover,
 .conversationItemActive {
   background: #0f172a;
-  border-color: #334155;
+  border-color: #60a5fa;
 }
 
 .avatar,
 .avatarPlaceholder {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 999px;
   flex-shrink: 0;
 }
@@ -112,25 +111,23 @@
 }
 
 .conversationTop strong {
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .conversationTop span {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #64748b;
   white-space: nowrap;
 }
 
 .friendName {
-  margin: 0.15rem 0 0;
-  font-size: 0.85rem;
-  color: #94a3b8;
+  margin: 0.25rem 0;
+  color: #cbd5e1;
 }
 
 .lastMessage {
-  margin: 0.35rem 0 0;
-  font-size: 0.85rem;
-  color: #64748b;
+  margin: 0;
+  color: #94a3b8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -145,24 +142,22 @@
 .conversationHeader {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
   padding: 1rem;
   border-bottom: 1px solid #1e293b;
 }
 
 .conversationHeader h2 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .conversationHeader p {
-  margin: 0.2rem 0 0;
-  color: #94a3b8;
-  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+  color: #cbd5e1;
 }
 
 .backMobileButton {
-  display: none;
   width: 38px;
   height: 38px;
   border-radius: 999px;
@@ -170,11 +165,13 @@
   background: #0f172a;
   color: #f8fafc;
   cursor: pointer;
+  font-size: 1.1rem;
+  display: none;
 }
 
 .messagesContainer {
   flex: 1;
-  padding: 1rem;
+  padding: 1.5rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -199,8 +196,8 @@
 }
 
 .messageBubbleMine {
-  background: #1e3a5f;
-  border-color: #2563eb;
+  background: #1d4ed8;
+  border-color: #60a5fa;
 }
 
 .messageBubble p {
@@ -211,8 +208,8 @@
 .messageBubble span {
   display: block;
   margin-top: 0.35rem;
-  font-size: 0.7rem;
-  color: #94a3b8;
+  color: #cbd5e1;
+  font-size: 0.75rem;
 }
 
 .messageForm {
@@ -220,6 +217,7 @@
   gap: 0.75rem;
   padding: 1rem;
   border-top: 1px solid #1e293b;
+  background: #111827;
 }
 
 .messageForm input {
@@ -227,23 +225,33 @@
   min-width: 0;
   padding: 0.85rem 1rem;
   border-radius: 0.8rem;
-  border: 1px solid #334155;
+  border: 1px solid #60a5fa;
   background: #0f172a;
   color: #f8fafc;
+  outline: none;
 }
 
 .messageForm input::placeholder {
   color: #64748b;
 }
 
+.messageForm input:focus {
+  border-color: #93c5fd;
+}
+
 .messageForm button {
-  padding: 0.85rem 1.2rem;
+  padding: 0.85rem 1.3rem;
   border: none;
   border-radius: 0.8rem;
   background: #2563eb;
   color: white;
   font-weight: 700;
   cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.messageForm button:hover {
+  background: #1d4ed8;
 }
 
 .messageForm button:disabled {
@@ -269,8 +277,8 @@
 
 .emptyText {
   color: #94a3b8;
-  font-size: 0.9rem;
-  padding: 1rem 0.25rem;
+  font-size: 0.95rem;
+  padding: 1rem;
 }
 
 .formError {
@@ -291,7 +299,7 @@
 
   .conversationList,
   .conversationPanel {
-    min-height: 600px;
+    min-height: 620px;
   }
 
   .messagesLayout.hasSelectedConversation .conversationList {
@@ -303,7 +311,8 @@
   }
 
   .backMobileButton {
-    display: block;
+    display: grid;
+    place-items: center;
   }
 
   .messageBubble {
@@ -312,5 +321,9 @@
 
   .messageForm {
     flex-direction: column;
+  }
+
+  .messageForm button {
+    width: 100%;
   }
 }
