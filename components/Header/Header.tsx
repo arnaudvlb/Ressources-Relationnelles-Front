@@ -88,6 +88,9 @@ export default function Header() {
                 <li>
                   <Link href="/utilisateurs">Gestion des utilisateurs</Link>
                 </li>
+                <li>
+                  <Link href="/categories">Catégories</Link>
+                </li>
               </>
             )}
           </ul>
@@ -129,6 +132,9 @@ export default function Header() {
               <>
                 <li>
                   <Link href="/utilisateurs" onClick={() => setMenuOpen(false)}>Gestion des utilisateurs</Link>
+                </li>
+                <li>
+                  <Link href="/categories" onClick={() => setMenuOpen(false)}>Catégories</Link>
                 </li>
               </>
             )}
