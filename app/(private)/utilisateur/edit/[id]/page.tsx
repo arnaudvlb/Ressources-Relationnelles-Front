@@ -1,5 +1,6 @@
 "use client";
 
+import BackButton from "@/components/ui/BackButton/BackButton";
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
 import { useRoles } from "@/hooks/roles/useRoles";
@@ -7,7 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { usePutUtilisateur } from "@/hooks/utilisateurs/usePutUtilisateur";
 import { useUtilisateur } from "@/hooks/utilisateurs/useUtilisateur";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function alterUtilisateur() {
   const [message, setMessage] = useState("");
@@ -19,6 +20,8 @@ export default function alterUtilisateur() {
   const router = useRouter();
   const { isAdmin } = useAuth();
 
+  if (id !== localStorage.getItem("userId") && !isAdmin) return; 
+
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putUtilisateur({
       nom: formData.nom,
@@ -27,16 +30,16 @@ export default function alterUtilisateur() {
       email: formData.email,
       pseudo: formData.pseudo,
       photoProfil: utilisateur?.photo_profil ?? "",
-      statusCompte: Boolean(formData.statusCompte),
-      dateCreation: utilisateur?.date_creation ?? new Date().toISOString(),
-      role: `/api/roles_utilisateurs/${formData.role}`,
+      statusCompte: Boolean(formData.statusCompte) ?? utilisateur?.statusCompte,
+      dateCreation: utilisateur?.dateCreation ?? new Date().toISOString(),
+      role: formData.role != null ? `/api/roles_utilisateurs/${formData.role}` : `/api/roles_utilisateurs/${utilisateur?.role.id}`,
       plainPassword: formData.plainPassword,
     });
 
     if (res) {
       setTimeout(() => {
         setMessage("Modification réussie !");
-        router.push("/");
+        router.push(`/utilisateur/${id}`);
       }, 1500);
     }
   };
@@ -49,6 +52,7 @@ export default function alterUtilisateur() {
         <FormMessage message={message || error || ""} error={!!error} />
       )}
       <div className="page">
+        <BackButton href={`/utilisateur/${id}`}/>
         <Form
           titreForm="Données utilisateur"
           champs={[
@@ -93,7 +97,7 @@ export default function alterUtilisateur() {
                     name: "statusCompte",
                     values: ["1", "0"],
                     texts: ["Actif", "Désactivé"],
-                    selectDefaultValue: utilisateur?.statut_compte ?? "1",
+                    selectDefaultValue: utilisateur?.statusCompte == true ? "1" : "0",
                   },
 
                   {

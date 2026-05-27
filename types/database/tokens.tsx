@@ -7,7 +7,7 @@ export type Token = {
 
   date_expiration: string;
 
-  date_creation: string;
+  dateCreation: string;
 
   est_revoque: boolean;
 

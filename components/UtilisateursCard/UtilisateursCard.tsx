@@ -30,7 +30,7 @@ export default function UtilisateursCard({ users }: UtilisateursCardProps) {
             </div>
           </div>
           <div className={styles.userActions}>
-            <EditButton url={`/utilisateur/edit/${user.id}`} />
+            <EditButton url={`/utilisateur/${user.id}`} />
             <DeleteButton
               onConfirm={async () => {
                 await deleteUtilisateur(user.id);

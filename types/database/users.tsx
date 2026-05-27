@@ -15,9 +15,9 @@ export type User= {
 
   photo_profil: string | null;
 
-  statut_compte: "ACTIF" | "DESACTIVE" | "BLOQUE";
+  statusCompte: boolean;
 
-  date_creation: string;
+  dateCreation: string;
 
   role: Role;
 }

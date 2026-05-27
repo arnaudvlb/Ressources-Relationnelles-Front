@@ -76,6 +76,13 @@ export default function Header() {
               </>
             )}
             <li><Link href="/resources">Ressources</Link></li>
+            {isAuth && (
+              <>
+                <li>
+                  <Link href={`/utilisateur/${localStorage.getItem("userId")}`}>Compte utilisateur</Link>
+                </li>
+              </>
+            )}
             {isAdmin && (
               <>
                 <li>
@@ -111,6 +118,13 @@ export default function Header() {
               </>
             )}
             <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
+            {isAuth && (
+              <>
+                <li>
+                  <Link href={`/utilisateur/${localStorage.getItem("userId")}`} onClick={() => setMenuOpen(false)}>Compte utilisateur</Link>
+                </li>
+              </>
+            )}
             {isAdmin && (
               <>
                 <li>
