@@ -8,7 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
-  const { isAuth } = useAuth();
+  const { isAuth, isAdmin } = useAuth();
   
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -84,6 +84,13 @@ export default function Header() {
               </>
             )}
             <li><Link href="/resources">Ressources</Link></li>
+            {isAdmin && (
+              <>
+                <li>
+                  <Link href="/utilisateurs">Gestion des utilisateurs</Link>
+                </li>
+              </>
+            )}
           </ul>
 
           <button
@@ -120,6 +127,13 @@ export default function Header() {
               </>
             )}
             <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
+            {isAdmin && (
+              <>
+                <li>
+                  <Link href="/utilisateurs" onClick={() => setMenuOpen(false)}>Gestion des utilisateurs</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>
