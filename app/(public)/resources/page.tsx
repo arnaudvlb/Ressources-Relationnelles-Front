@@ -25,7 +25,7 @@ export default function ResourcesPage() {
 
     return matchTitre || matchCategorie;
   });
-console.log(resources)
+
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
   return (

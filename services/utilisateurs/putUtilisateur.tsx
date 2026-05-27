@@ -33,18 +33,6 @@ export default async function putUtilisateur(
     }),
   });
 
-  console.log(
-      nom,
-      prenom,
-      telephone,
-      email,
-      pseudo,
-      photoProfil,
-      statusCompte,
-      dateCreation,
-      role,
-      plainPassword)
-
   if (!res.ok) {
     if (res.status === 400) {
       throw new Error(

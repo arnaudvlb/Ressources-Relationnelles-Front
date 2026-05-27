@@ -7,7 +7,7 @@ export default function UtilisateursPage() {
   const { utilisateurs, loading, error } = useUtilisateurs();
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
-console.log(utilisateurs)
+
   return (
     <main className="page">
       <h1 className="pageTitle">Gestion des utilisateurs</h1>
