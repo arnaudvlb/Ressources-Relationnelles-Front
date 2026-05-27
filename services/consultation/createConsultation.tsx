@@ -1,0 +1,23 @@
+export type CreateConsultationPayload = {
+  utilisateur: string | null;
+  resource: string;
+};
+
+export default async function createConsultation(
+  payload: CreateConsultationPayload
+): Promise<any> {
+  const res = await fetch("/api/consultations", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/ld+json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Erreur API: ${res.status}`);
+  }
+
+  return res.json();
+}

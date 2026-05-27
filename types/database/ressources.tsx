@@ -2,6 +2,7 @@ import { Adorer } from "./adorers";
 import { Categorie } from "./categories";
 import { Commentaire } from "./commentaires";
 import { Consultation } from "./consultations";
+import { Favori } from "./favoris";
 import { Media } from "./medias";
 import { Partage } from "./partages";
 import { Tag } from "./tags";
@@ -21,6 +22,7 @@ export type Ressource = {
   commentaires: Commentaire[];
   partages: Partage[];
   adorers: Adorer[];
+  favoris : Favori[];
   tagsRessources: Tag[];
   utilisateur: User;
   dateCreation: string;
