@@ -17,7 +17,7 @@ export default async function putUtilisateur(
     method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/merge-patch+json",
+      "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({
       nom,
@@ -32,6 +32,18 @@ export default async function putUtilisateur(
       plainPassword
     }),
   });
+
+  console.log(
+      nom,
+      prenom,
+      telephone,
+      email,
+      pseudo,
+      photoProfil,
+      statusCompte,
+      dateCreation,
+      role,
+      plainPassword)
 
   if (!res.ok) {
     if (res.status === 400) {

@@ -17,7 +17,7 @@ export default function ResourcesCard({
 }: Readonly<ResourcesCardProps>) {
   const { isAuth, isAdmin, userName } = useAuth();
   const { deleteRessource } = useDeleteRessource(0);
-
+console.log(resources)
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => (
@@ -28,9 +28,9 @@ export default function ResourcesCard({
           >
             <span
               className={styles.cardLibelleCategorie}
-              style={{ color: resource.categories[0].couleur }}
+              style={{ color: resource.categories?.[0]?.couleur }}
             >
-              {resource.categories[0].libelle}
+              {resource.categories?.[0]?.libelle}
             </span>
 
             <h2 className={styles.cardTitre}>{resource.titre}</h2>

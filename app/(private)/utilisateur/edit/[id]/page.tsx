@@ -16,22 +16,21 @@ export default function alterUtilisateur() {
   const { utilisateur } = useUtilisateur(id);
   const { putUtilisateur, loading, error } = usePutUtilisateur(id);
   const { roles } = useRoles();
-  const [selectedRole, setSelectedRole] = useState(Number);
   const router = useRouter();
   const { isAdmin } = useAuth();
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putUtilisateur({
-      nom: "",
-      prenom: "",
-      telephone: "",
-      email: "",
-      pseudo: formData,
-      photoProfil: "",
-      statusCompte: true,
-      dateCreation: "",
-      role: "",
-      plainPassword: "",
+      nom: formData.nom,
+      prenom: formData.prenom,
+      telephone: formData.telephone,
+      email: formData.email,
+      pseudo: formData.pseudo,
+      photoProfil: utilisateur?.photo_profil ?? "",
+      statusCompte: Boolean(formData.statusCompte),
+      dateCreation: utilisateur?.date_creation ?? new Date().toISOString(),
+      role: `/api/roles_utilisateurs/${formData.role}`,
+      plainPassword: formData.plainPassword,
     });
 
     if (res) {
@@ -52,18 +51,61 @@ export default function alterUtilisateur() {
       <div className="page">
         <Form
           titreForm="Données utilisateur"
-          champs={["Nom", "Prénom", "Numéro de téléphone", "Adresse Email", "Pseudo", "Nouveau mot de passe"]}
-          names={["nom", "prenom", "telephone", "email", "pseudo", "plainPassword"]}
+          champs={[
+            "Nom",
+            "Prénom",
+            "Numéro de téléphone",
+            "Adresse Email",
+            "Pseudo",
+            "Nouveau mot de passe",
+          ]}
+          names={[
+            "nom",
+            "prenom",
+            "telephone",
+            "email",
+            "pseudo",
+            "password",
+          ]}
           buttonText={loading ? "Mise à jour..." : "Mettre à jour les données"}
-          placeHolders={["Nom", "Prénom", "0612345678","nom.prenom@xyz.com", "Pseudo", "••••••••"]}
+          placeHolders={[
+            "Nom",
+            "Prénom",
+            "0612345678",
+            "nom.prenom@xyz.com",
+            "Pseudo",
+            "••••••••",
+          ]}
           onSubmit={handleSubmit}
           defaultValues={{
             nom: utilisateur?.nom ?? "",
             prenom: utilisateur?.prenom ?? "",
             telephone: utilisateur?.telephone ?? "",
             email: utilisateur?.email ?? "",
-            plainPassword: "",
+            pseudo: utilisateur?.pseudo ?? "",
+            password: "",
           }}
+          selects={
+            isAdmin
+              ? [
+                  {
+                    label: "Statut du compte",
+                    name: "statusCompte",
+                    values: ["1", "0"],
+                    texts: ["Actif", "Désactivé"],
+                    selectDefaultValue: utilisateur?.statut_compte ?? "1",
+                  },
+
+                  {
+                    label: "Rôle",
+                    name: "role",
+                    values: roles.map((role) => String(role.id)),
+                    texts: roles.map((role) => role.libelle),
+                    selectDefaultValue: String(utilisateur?.role?.id ?? ""),
+                  },
+                ]
+              : undefined
+          }
         />
       </div>
     </>

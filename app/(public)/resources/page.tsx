@@ -18,14 +18,14 @@ export default function ResourcesPage() {
 
     const matchTitre = resource.titre.toLowerCase().includes(searchLower);
 
-    const matchCategorie = resource.categories[0].libelle.toLowerCase().includes(searchLower);
+    const matchCategorie = resource.categories?.[0]?.libelle.toLowerCase().includes(searchLower);
 
     if (filterBy === "titre") return matchTitre;
     if (filterBy === "categorie") return matchCategorie;
 
     return matchTitre || matchCategorie;
   });
-
+console.log(resources)
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
   return (

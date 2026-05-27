@@ -13,16 +13,25 @@ export default function Form({
   placeHolders,
   textAreas,
   defaultValues,
+  selects,
   onSubmit,
   footerContent,
 }: FormProps) {
   const [formData, setFormData] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    if (defaultValues) {
-      setFormData(defaultValues);
-    }
-  }, [defaultValues]);
+    const initialData: Record<string, string> = {
+      ...(defaultValues ?? {}),
+    };
+
+    selects?.forEach((select) => {
+      if (!initialData[select.name]) {
+        initialData[select.name] = select.selectDefaultValue ?? "";
+      }
+    });
+
+    setFormData(initialData);
+  }, [defaultValues, selects]);
 
   const handleChange = (key: string, value: string) => {
     setFormData((prev) => ({
@@ -82,6 +91,25 @@ export default function Form({
               </div>
             );
           })}
+
+          {selects?.map((select) => (
+            <div key={select.name} className={styles.formGroup}>
+              <label htmlFor={select.name}>{select.label}</label>
+
+              <select
+                id={select.name}
+                value={formData[select.name] || ""}
+                onChange={(e) => handleChange(select.name, e.target.value)}
+                className={styles.select}
+              >
+                {select.values.map((value, index) => (
+                  <option key={value} value={value}>
+                    {select.texts[index]}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
 
           <Button text={buttonText} />
 

@@ -3,7 +3,6 @@ import putUtilisateurService from "@/services/utilisateurs/putUtilisateur";
 import { User } from "@/types/database/users";
 
 type FormData = {
-  id: number;
   nom: string;
   prenom: string;
   telephone: string;
