@@ -1,6 +1,7 @@
 "use client";
 
 import CategoriesCard from "@/components/CategoriesCard/CategoriesCard";
+import CreateButton from "@/components/ui/CreateButton/CreateButton";
 import Filter from "@/components/ui/Filter/Filter";
 import { useCategories } from "@/hooks/categories/useCategories";
 import { useAuth } from "@/hooks/useAuth";
@@ -41,6 +42,7 @@ export default function CategoriesPage() {
         ]}
       />
       <CategoriesCard categories={filteredCategories}/>
+      <CreateButton url="/categorie/new"/>
     </main>
   );
 }
