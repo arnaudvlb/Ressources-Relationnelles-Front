@@ -19,12 +19,12 @@ export default function newResourcePage() {
   const router = useRouter();
 
   if (!isAuth) return;
-
+console.log(resource?.valide)
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putRessource({
       titre: formData.titre,
       contenu: formData.Contenu,
-      valide: Boolean(formData.valide) ?? Boolean(resource?.valide),
+      valide: resource?.valide ?? Boolean(formData.valide),
       date_creation: resource?.dateCreation ?? new Date().toISOString(),
       visibilite: formData.visibilite,
       utilisateur:
