@@ -20,8 +20,6 @@ export function useAmis() {
       return data;
     } catch (err: any) {
       setError(err?.message ?? "Erreur inconnue");
-      console.log(error);
-
       return [];
     } finally {
       setLoading(false);

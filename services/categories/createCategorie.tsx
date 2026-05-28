@@ -4,7 +4,7 @@ export default async function createRessource(
   libelle: string,
   couleur: string,
 ): Promise<Categorie> {
-  const res = await fetch("/api/ressources", {
+  const res = await fetch("/api/categories", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

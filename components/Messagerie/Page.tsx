@@ -21,7 +21,6 @@ export default function Page() {
 
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
   const [isAuth, setIsAuth] = useState(false);
-  const [authLoaded, setAuthLoaded] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -31,7 +30,6 @@ export default function Page() {
 
     setCurrentUserId(userId);
     setIsAuth(!!token && !!userId);
-    setAuthLoaded(true);
   }, []);
 
   const { 
@@ -53,8 +51,6 @@ export default function Page() {
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
   const [messageContent, setMessageContent] = useState("");
   
-
-  
   const selectedConversation = useMemo(() => {
 
     if (!selectedUserId) return null;
@@ -66,8 +62,6 @@ export default function Page() {
     );
   }, [conversations, selectedUserId]);
 
-
-  //Affichage de la conversation sélectionner 
   const selectedMessages = useMemo(() => {
  
     if (!currentUserId || !selectedUserId) return [];

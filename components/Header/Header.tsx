@@ -57,7 +57,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <img src="../logoMinistere.svg" alt="Logo ministère"/>
+        <img src="../logoRR.png" alt="Logo"/>
       </div>
 
       <nav ref={navRef} className={styles.nav}>

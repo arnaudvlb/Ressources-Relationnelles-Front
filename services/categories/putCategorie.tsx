@@ -3,7 +3,7 @@ import { Categorie } from "@/types/database/categories";
 export default async function putCategorie(
   id: string,
   libelle: string,
-  categorie: string,
+  couleur: string,
 ): Promise<Categorie> {
   const res = await fetch(`/api/categories/${id}`, {
     method: "PUT",
@@ -13,7 +13,7 @@ export default async function putCategorie(
     },
     body: JSON.stringify({
       libelle,
-      categorie,
+      couleur,
     }),
   });
 

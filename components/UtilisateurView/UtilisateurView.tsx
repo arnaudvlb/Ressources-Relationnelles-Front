@@ -6,7 +6,7 @@ export default function UtilisateurView({
   utilisateur,
   id,
 }: UtilisateurViewProps) {
-    console.log(utilisateur?.statusCompte)
+
   return (
     <section className={styles.userCard}>
       <h2 className={styles.userTitle}>

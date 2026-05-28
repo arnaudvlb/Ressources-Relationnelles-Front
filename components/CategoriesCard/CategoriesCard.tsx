@@ -9,6 +9,7 @@ export default function CategoriesCard({
   categories,
 }: CategoriesCardProps) {
   const { deleteCategorie } = useDeleteCategorie(0);
+
   return (
     <div className={styles.cardList}>
       {categories.map((categorie) => (
@@ -33,7 +34,7 @@ export default function CategoriesCard({
           </div>
 
           <div className={styles.cardActions}>
-            <EditButton url={`/categorie/${categorie.id}`}/>
+            <EditButton url={`/categorie/edit/${categorie.id}`}/>
             <DeleteButton
             onConfirm={async () => {
                   await deleteCategorie(categorie.id);

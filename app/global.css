@@ -5,18 +5,18 @@
 :root {
   --bg: #ffffff;
   --text: #111111;
-  --primary: #2563eb;
-  --border: #e5e7eb;
-  --surface: #f8fafc;
+  --primary: #25ebd1;
+  --border: #e5ebeb;
+  --surface: #f8fcfc;
   --shadow: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="dark"] {
-  --bg: #0f172a;
+  --bg: #0f262a;
   --text: #e5e7eb;
-  --primary: #60a5fa;
-  --border: #1e293b;
-  --surface: #020617;
+  --primary: #39e8bc;
+  --border: #1e3a3b;
+  --surface: #021617;
   --shadow: rgba(0, 0, 0, 0.35);
 }
 

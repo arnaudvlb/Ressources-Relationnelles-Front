@@ -58,6 +58,10 @@ export default function editCategorie() {
             "Libellé",
             "#FFFFFF"
           ]}
+          defaultValues={{
+            libelle: categorie?.libelle ?? "",
+            couleur: categorie?.couleur ?? ""
+          }}
           onSubmit={handleSubmit}
         />
       </div>

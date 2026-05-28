@@ -24,7 +24,14 @@ export function useMessagerie(currentUserId: number | null) {
   const conversations = useMemo(() => {
     if (!currentUserId) return [];
 
-    const conversationsList = amis
+    const userRelations = amis.filter((relation: Ami) => {
+      return (
+        relation.demandeur?.id === currentUserId ||
+        relation.ami?.id === currentUserId
+      );
+    });
+
+    const conversationsList = userRelations
       .map((relation: Ami): Conversation | null => {
         const demandeurId = relation.demandeur?.id;
         const amiId = relation.ami?.id;
@@ -46,8 +53,7 @@ export function useMessagerie(currentUserId: number | null) {
           return (
             (expediteurId === currentUserId &&
               destinataireId === friendUser.id) ||
-            (expediteurId === friendUser.id &&
-              destinataireId === currentUserId)
+            (expediteurId === friendUser.id && destinataireId === currentUserId)
           );
         });
 
