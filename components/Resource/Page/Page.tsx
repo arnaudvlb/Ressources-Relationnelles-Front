@@ -108,7 +108,7 @@ export default function Page({ resource }: Readonly<PageProps>) {
           setAdorersCount={setAdorersCount}
           setFavorisCount={setFavorisCount}
           tags={resource.tagsRessources}
-          categories={resource.categories ?? []}
+          categorie={resource.categorie}
         />
 
         <Comment commentaires={resource.commentaires} ressourceId={resource.id} />

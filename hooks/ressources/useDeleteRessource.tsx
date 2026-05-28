@@ -1,5 +1,5 @@
 import { useState } from "react";
-import deleteRessourceService from "@/services/ressources/deleteRessource"; "@/services/ressources/deleteRessource";
+import deleteRessourceService from "@/services/ressources/deleteRessource";
 
 export function useDeleteRessource(id: number) {
   const [loading, setLoading] = useState(false);

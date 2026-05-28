@@ -16,7 +16,7 @@ export type Ressource = {
   id: number;
   titre: string;
   contenu: string;
-  categories: Categorie[];
+  categorie: Categorie;
   medias: string[];
   consultations: Consultation[];
   commentaires: Commentaire[];

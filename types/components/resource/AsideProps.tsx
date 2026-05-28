@@ -26,5 +26,5 @@ export type AsideProps = {
   setFavorisCount: Dispatch<SetStateAction<number>>;
 
   tags: Tag[];
-  categories?: Categorie[];
+  categorie: Categorie;
 };

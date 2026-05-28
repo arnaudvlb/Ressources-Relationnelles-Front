@@ -25,7 +25,7 @@ export default function Aside({
   setAdorersCount,
   setFavorisCount,
   tags,
-  categories,
+  categorie,
 }: Readonly<AsideProps>) {
   const { createAdorer } = useCreateAdorer();
   const { deleteAdorer } = useDeleteAdorer();
@@ -172,20 +172,6 @@ export default function Aside({
     console.log(" Fin handleToggleFavori ajout");
   }
 
-  console.log(" Aside rendu", {
-    resourceId,
-    adorers,
-    favoris,
-    partages,
-    consultations,
-    isLiked,
-    isFavoris,
-    adorerId,
-    favoriId,
-    tags,
-    categories,
-  });
-
   return (
     <aside className={styles.resourceAside}>
       <div className={styles.actions}>
@@ -232,11 +218,9 @@ export default function Aside({
 
       <div className={styles.resourceCard}>
         <strong>Catégories</strong>
-        {(categories ?? []).map((categorie, i) => (
-          <p key={i} style={{ color: categorie.couleur }}>
+          <p style={{ color: categorie.couleur }}>
             {categorie.libelle}
           </p>
-        ))}
       </div>
     </aside>
   );

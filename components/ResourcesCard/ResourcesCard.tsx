@@ -28,9 +28,9 @@ export default function ResourcesCard({
           >
             <span
               className={styles.cardLibelleCategorie}
-              style={{ color: resource.categories?.[0]?.couleur }}
+              style={{ color: resource.categorie.couleur }}
             >
-              {resource.categories?.[0]?.libelle}
+              {resource.categorie.libelle}
             </span>
 
             <h2 className={styles.cardTitre}>{resource.titre}</h2>
