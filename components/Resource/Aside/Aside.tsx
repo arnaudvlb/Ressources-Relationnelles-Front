@@ -34,7 +34,7 @@ export default function Aside({
   const { deleteFavori } = useDeleteFavori();
 
   async function handleToggleLike() {
-    console.log("❤️ Début handleToggleLike");
+    console.log(" Début handleToggleLike");
     console.log("resourceId :", resourceId);
     console.log("isLiked actuel :", isLiked);
     console.log("adorerId actuel :", adorerId);
@@ -47,12 +47,12 @@ export default function Aside({
     console.log("currentUserId :", currentUserId);
 
     if (!currentUserId) {
-      console.log("❌ Aucun utilisateur connecté, arrêt du like.");
+      console.log(" Aucun utilisateur connecté, arrêt du like.");
       return;
     }
 
     if (isLiked && adorerId) {
-      console.log("🗑️ Suppression du like id :", adorerId);
+      console.log(" Suppression du like id :", adorerId);
 
       try {
         const deleted = await deleteAdorer(adorerId);
@@ -64,13 +64,13 @@ export default function Aside({
           setAdorerId(null);
           setAdorersCount((prev) => Math.max(prev - 1, 0));
 
-          console.log("✅ Like supprimé localement");
+          console.log(" Like supprimé localement");
         }
       } catch (error) {
-        console.log("❌ Erreur pendant deleteAdorer :", error);
+        console.log(" Erreur pendant deleteAdorer :", error);
       }
 
-      console.log("❤️ Fin handleToggleLike suppression");
+      console.log("Fin handleToggleLike suppression");
       return;
     }
 
@@ -85,26 +85,26 @@ export default function Aside({
     try {
       const created = await createAdorer(payload);
 
-      console.log("📥 Réponse createAdorer :", created);
+      console.log(" Réponse createAdorer :", created);
 
       if (created) {
         setIsLiked(true);
         setAdorerId(created.id);
         setAdorersCount((prev) => prev + 1);
 
-        console.log("✅ Like ajouté localement avec id :", created.id);
+        console.log(" Like ajouté localement avec id :", created.id);
       } else {
-        console.log("⚠️ createAdorer a retourné null ou undefined");
+        console.log(" createAdorer a retourné null ou undefined");
       }
     } catch (error) {
-      console.log("❌ Erreur pendant createAdorer :", error);
+      console.log(" Erreur pendant createAdorer :", error);
     }
 
-    console.log("❤️ Fin handleToggleLike ajout");
+    console.log("Fin handleToggleLike ajout");
   }
 
   async function handleToggleFavori() {
-    console.log("⭐ Début handleToggleFavori");
+    console.log(" Début handleToggleFavori");
     console.log("resourceId :", resourceId);
     console.log("isFavoris actuel :", isFavoris);
     console.log("favoriId actuel :", favoriId);
@@ -134,13 +134,13 @@ export default function Aside({
           setFavoriId(null);
           setFavorisCount((prev) => Math.max(prev - 1, 0));
 
-          console.log("✅ Favori supprimé localement");
+          console.log(" Favori supprimé localement");
         }
       } catch (error) {
-        console.log("❌ Erreur pendant deleteFavori :", error);
+        console.log("Erreur pendant deleteFavori :", error);
       }
 
-      console.log("⭐ Fin handleToggleFavori suppression");
+      console.log(" Fin handleToggleFavori suppression");
       return;
     }
 
@@ -149,30 +149,30 @@ export default function Aside({
       resource: `/api/ressources/${resourceId}`,
     };
 
-    console.log("📤 Payload createFavori :", payload);
+    console.log(" Payload createFavori :", payload);
 
     try {
       const created = await createFavori(payload);
 
-      console.log("📥 Réponse createFavori :", created);
+      console.log(" Réponse createFavori :", created);
 
       if (created) {
         setIsFavoris(true);
         setFavoriId(created.id);
         setFavorisCount((prev) => prev + 1);
 
-        console.log("✅ Favori ajouté localement avec id :", created.id);
+        console.log(" Favori ajouté localement avec id :", created.id);
       } else {
-        console.log("⚠️ createFavori a retourné null ou undefined");
+        console.log(" createFavori a retourné null ou undefined");
       }
     } catch (error) {
-      console.log("❌ Erreur pendant createFavori :", error);
+      console.log(" Erreur pendant createFavori :", error);
     }
 
-    console.log("⭐ Fin handleToggleFavori ajout");
+    console.log(" Fin handleToggleFavori ajout");
   }
 
-  console.log("🧩 Aside rendu", {
+  console.log(" Aside rendu", {
     resourceId,
     adorers,
     favoris,
@@ -200,10 +200,6 @@ export default function Aside({
           <span>{adorers}</span>
         </button>
 
-        <button type="button" className={styles.actionBtn}>
-          <span>🔗</span>
-          <span>{partages}</span>
-        </button>
 
         <button type="button" className={styles.actionBtn}>
           <span>👁️</span>
