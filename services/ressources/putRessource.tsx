@@ -4,20 +4,28 @@ export default async function putRessource(
   id: string,
   titre: string,
   contenu: string,
-  estVisible: boolean,
+  valide: boolean,
+  date_creation: string,
   visibilite: string,
+  utilisateur: number,
+  categorie: string,
+  tags: string[],
 ): Promise<Ressource> {
   const res = await fetch(`/api/ressources/${id}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/merge-patch+json",
+      "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({
       titre,
       contenu,
-      estVisible,
+      valide,
+      date_creation,
       visibilite,
+      utilisateur,
+      categorie,
+      tags,
     }),
   });
 

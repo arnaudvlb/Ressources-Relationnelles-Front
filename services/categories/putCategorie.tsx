@@ -9,7 +9,7 @@ export default async function putCategorie(
     method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/merge-patch+json",
+      "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({
       libelle,

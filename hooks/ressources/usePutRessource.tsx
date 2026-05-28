@@ -2,11 +2,15 @@ import { useState } from "react";
 import putRessourceService from "@/services/ressources/putRessource";
 import { Ressource } from "@/types/database/ressources";
 
-type FormData = {
+type FormData = {  
   titre: string;
   contenu: string;
-  estVisible: boolean;
+  valide: boolean;
+  date_creation: string;
   visibilite: string;
+  utilisateur: number;
+  categorie: string;
+  tags: string[];
 };
 
 export function usePutRessource(id: string) {
@@ -23,8 +27,12 @@ export function usePutRessource(id: string) {
         id,
         formData.titre,
         formData.contenu,
-        formData.estVisible,
+        formData.valide,
+        formData.date_creation,
         formData.visibilite,
+        formData.utilisateur,
+        formData.categorie,
+        formData.tags,
       );
 
       setData(result);
