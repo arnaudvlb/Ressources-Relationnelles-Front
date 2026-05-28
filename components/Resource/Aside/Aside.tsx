@@ -168,7 +168,7 @@ export default function Aside({
     adorerId,
     favoriId,
     tags,
-    categories,
+    categorie,
   });
 
   return (
