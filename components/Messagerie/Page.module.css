@@ -2,7 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1rem;
-  color: #f8fafc;
+  color: var(--text);
 }
 
 .messagesHeader {

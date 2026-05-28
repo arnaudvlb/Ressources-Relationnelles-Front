@@ -13,24 +13,43 @@ export default function ResourcesPage() {
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("all");
 
-  const filteredResources = resources.filter((resource) => {
-    if (!isModo && !resource.valide) {
-      return false;
-    }
+  const currentUserId = Number(localStorage.getItem("userId"));
 
-    const searchLower = search.toLowerCase();
+  const filteredResources = resources
+    .filter((resource) => {
+      if (!isModo && !resource.valide) {
+        return false;
+      }
 
-    const matchTitre = resource.titre.toLowerCase().includes(searchLower);
+      const searchLower = search.toLowerCase();
 
-    const matchCategorie = resource.categories?.[0]?.libelle
-      .toLowerCase()
-      .includes(searchLower);
+      const matchTitre = resource.titre.toLowerCase().includes(searchLower);
 
-    if (filterBy === "titre") return matchTitre;
-    if (filterBy === "categorie") return matchCategorie;
+      const matchCategorie = resource.categorie.libelle
+        .toLowerCase()
+        .includes(searchLower);
 
-    return matchTitre || matchCategorie;
-  });
+      if (filterBy === "titre") return matchTitre;
+
+      if (filterBy === "categorie") return matchCategorie;
+
+      return matchTitre || matchCategorie;
+    })
+    .sort((a, b) => {
+      const aAdore = a.adorers.some(
+        (adorer) => adorer.utilisateur.id === currentUserId,
+      );
+
+      const bAdore = b.adorers.some(
+        (adorer) => adorer.utilisateur.id === currentUserId,
+      );
+
+      if (aAdore && !bAdore) return -1;
+
+      if (!aAdore && bAdore) return 1;
+
+      return 0;
+    });
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;

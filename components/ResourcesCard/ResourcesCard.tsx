@@ -17,11 +17,31 @@ export default function ResourcesCard({
 }: Readonly<ResourcesCardProps>) {
   const { isAuth, isAdmin, userName } = useAuth();
   const { deleteRessource } = useDeleteRessource(0);
-
+  console.log(resources);
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => (
-        <article key={resource.id} className={styles.card}>
+        <article
+          key={resource.id}
+          className={`${styles.card} ${
+            resource.favoris.some(
+              (favori) =>
+                favori.utilisateur.id ===
+                Number(localStorage.getItem("userId")),
+            )
+              ? styles.favoriteCard
+              : ""
+          }
+          ${
+            resource.adorers.some(
+              (adorer) =>
+                adorer.utilisateur.id ===
+                Number(localStorage.getItem("userId")),
+            )
+              ? styles.likedCard
+              : ""
+          }`}
+        >
           <Link
             href={`/resource/${resource.id}`}
             className={styles.cardContent}
@@ -30,7 +50,21 @@ export default function ResourcesCard({
               className={styles.cardLibelleCategorie}
               style={{ color: resource.categorie.couleur }}
             >
-              {resource.categorie.libelle}
+              {resource.categorie.libelle +
+                (resource.favoris.some(
+                  (favori) =>
+                    favori.utilisateur.id ===
+                    Number(localStorage.getItem("userId")),
+                )
+                  ? " / Favori"
+                  : "") +
+                (resource.adorers.some(
+                  (adorer) =>
+                    adorer.utilisateur.id ===
+                    Number(localStorage.getItem("userId")),
+                )
+                  ? " / Adoré"
+                  : "")}
             </span>
 
             <h2 className={styles.cardTitre}>{resource.titre}</h2>
