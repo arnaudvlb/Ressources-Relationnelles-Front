@@ -232,12 +232,7 @@ export default function Aside({
 
       <div className={styles.resourceCard}>
         <strong>Catégories</strong>
-<<<<<<< HEAD
-        {categories?.map((categorie, i) => (
-=======
-
         {(categories ?? []).map((categorie, i) => (
->>>>>>> origin/feat/ressourcesStats
           <p key={i} style={{ color: categorie.couleur }}>
             {categorie.libelle}
           </p>
