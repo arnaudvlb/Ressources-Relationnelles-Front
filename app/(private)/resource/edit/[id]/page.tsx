@@ -3,7 +3,6 @@
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
 import { useCategories } from "@/hooks/categories/useCategories";
-import { useCreateRessource } from "@/hooks/ressources/useCreateRessource";
 import { usePutRessource } from "@/hooks/ressources/usePutRessource";
 import { useRessource } from "@/hooks/ressources/useRessource";
 import { useAuth } from "@/hooks/useAuth";
@@ -18,7 +17,7 @@ export default function newResourcePage() {
   const { isAuth, isModo } = useAuth();
   const router = useRouter();
 
-  if (!isAuth) return;
+  if (!isAuth && localStorage.getItem("userId") != String(resource?.utilisateur.id) && !isModo) return;
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putRessource({

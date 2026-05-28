@@ -4,28 +4,28 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { useAuth } from "@/hooks/useAuth";
-import { Ami } from '../../types/database/amis';
+import { Ami } from "../../types/database/amis";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const { isAuth, isAdmin } = useAuth();
-  
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const applyTheme = (isDark: boolean) => {
       document.documentElement.setAttribute(
         "data-theme",
-        isDark ? "dark" : "light"
+        isDark ? "dark" : "light",
       );
     };
 
     applyTheme(mediaQuery.matches);
-    mediaQuery.addEventListener("change", e => applyTheme(e.matches));
+    mediaQuery.addEventListener("change", (e) => applyTheme(e.matches));
 
     return () =>
-      mediaQuery.removeEventListener("change", e => applyTheme(e.matches));
+      mediaQuery.removeEventListener("change", (e) => applyTheme(e.matches));
   }, []);
 
   useEffect(() => {
@@ -57,17 +57,50 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <img src="../logoRR.png" alt="Logo"/>
+        <img src="../logoRR.png" alt="Logo" />
       </div>
 
       <nav ref={navRef} className={styles.nav}>
         <div className={styles.navContainer}>
           <ul>
-            <li><Link href="/">Accueil</Link></li>
+            <li>
+              <Link href="/">Accueil</Link>
+            </li>
             {!isAuth && (
               <li>
                 <Link href="/login">Connexion</Link>
               </li>
+            )}
+            <li>
+              <Link href="/resources">Ressources</Link>
+            </li>
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/messagerie">Messagerie</Link>
+                </li>
+              </>
+            )}
+            {isAuth && (
+              <>
+                <li>
+                  <Link href="/amis">Amis</Link>
+                </li>
+              </>
+            )}
+            {isAdmin && (
+              <li>
+                <Link href="/categories">Catégories</Link>
+              </li>
+            )}
+            {isAuth && (
+              <>
+                <li>
+                  <Link href={`/utilisateur/${localStorage.getItem("userId")}`}>
+                    Compte utilisateur
+                  </Link>
+                </li>
+              </>
             )}
             {isAuth && (
               <>
@@ -76,43 +109,16 @@ export default function Header() {
                 </li>
               </>
             )}
-            <li><Link href="/resources">Ressources</Link></li>
-            {isAuth && (
-              <>
-                <li>
-                  <Link href="/messagerie">Messagerie</Link>
-                </li>
-              </>
-            )}
-            {isAuth && (
-              <>
-                <li>
-                  <Link href="/amis">Amis</Link>
-                </li>
-              </>
-            )}
-            {isAuth && (
-              <>
-                <li>
-                  <Link href={`/utilisateur/${localStorage.getItem("userId")}`}>Compte utilisateur</Link>
-                </li>
-              </>
-            )}
             {isAdmin && (
-              <>
-                <li>
-                  <Link href="/utilisateurs">Gestion des utilisateurs</Link>
-                </li>
-                <li>
-                  <Link href="/categories">Catégories</Link>
-                </li>
-              </>
+              <li>
+                <Link href="/utilisateurs">Gestion des utilisateurs</Link>
+              </li>
             )}
           </ul>
 
           <button
             className={`${styles.burger} ${menuOpen ? styles.open : ""}`}
-            onClick={() => setMenuOpen(prev => !prev)}
+            onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Menu"
             aria-expanded={menuOpen}
           >
@@ -120,23 +126,28 @@ export default function Header() {
           </button>
         </div>
 
-        <div className={`${styles.mobileWrapper} ${menuOpen ? styles.open : ""}`}>
+        <div
+          className={`${styles.mobileWrapper} ${menuOpen ? styles.open : ""}`}
+        >
           <ul className={styles.mobileMenu}>
-            <li><Link href="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
+            <li>
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                Accueil
+              </Link>
+            </li>
             {!isAuth && (
               <li>
-                <Link href="/login" onClick={() => setMenuOpen(false)}>Connexion</Link>
+                <Link href="/login" onClick={() => setMenuOpen(false)}>
+                  Connexion
+                </Link>
               </li>
             )}
+            <li>
+              <Link href="/resources" onClick={() => setMenuOpen(false)}>
+                Ressources
+              </Link>
+            </li>
             {isAuth && (
-              <>
-                <li>
-                  <Link href="/logout" onClick={() => setMenuOpen(false)}>Déconnexion</Link>
-                </li>
-              </>
-            )}
-            <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
-             {isAuth && (
               <>
                 <li>
                   <Link href="/messagerie">Messagerie</Link>
@@ -150,22 +161,36 @@ export default function Header() {
                 </li>
               </>
             )}
+            {isAdmin && (
+              <li>
+                <Link href="/categories" onClick={() => setMenuOpen(false)}>
+                  Catégories
+                </Link>
+              </li>
+            )}
             {isAuth && (
               <>
                 <li>
-                  <Link href={`/utilisateur/${localStorage.getItem("userId")}`} onClick={() => setMenuOpen(false)}>Compte utilisateur</Link>
+                  <Link
+                    href={`/utilisateur/${localStorage.getItem("userId")}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Compte utilisateur
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/logout" onClick={() => setMenuOpen(false)}>
+                    Déconnexion
+                  </Link>
                 </li>
               </>
             )}
             {isAdmin && (
-              <>
-                <li>
-                  <Link href="/utilisateurs" onClick={() => setMenuOpen(false)}>Gestion des utilisateurs</Link>
-                </li>
-                <li>
-                  <Link href="/categories" onClick={() => setMenuOpen(false)}>Catégories</Link>
-                </li>
-              </>
+              <li>
+                <Link href="/utilisateurs" onClick={() => setMenuOpen(false)}>
+                  Gestion des utilisateurs
+                </Link>
+              </li>
             )}
           </ul>
         </div>
