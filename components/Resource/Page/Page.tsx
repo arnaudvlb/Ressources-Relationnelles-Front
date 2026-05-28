@@ -14,6 +14,7 @@ import { useCreateConsultation } from "@/hooks/consultations/useCreateConsultati
 import styles from "@/components/Resource/Page/Page.module.css";
 
 export default function Page({ resource }: Readonly<PageProps>) {
+  
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isFavoris, setIsFavoris] = useState<boolean>(false);
 
