@@ -27,15 +27,7 @@ export default async function createRessource(
       tags,
     }),
   });
-  console.log(
-      "titre:" + titre,
-      "contenu:" + contenu,
-      "valide:" + valide,
-      "date_creation:" + date_creation,
-      "visibilite:" + visibilite,
-      "utilisateur:" + utilisateur,
-      "categorie:" + categorie,
-      "tags:" + tags,)
+
   if (!res.ok) {
     if (res.status === 400) {
       throw new Error("Données invalides.");

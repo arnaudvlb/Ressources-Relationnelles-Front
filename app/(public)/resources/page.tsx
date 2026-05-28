@@ -9,16 +9,22 @@ import { useState } from "react";
 
 export default function ResourcesPage() {
   const { resources, loading, error } = useRessources();
-  const { isAuth } = useAuth();
+  const { isAuth, isModo } = useAuth();
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("all");
 
   const filteredResources = resources.filter((resource) => {
+    if (!isModo && !resource.valide) {
+      return false;
+    }
+
     const searchLower = search.toLowerCase();
 
     const matchTitre = resource.titre.toLowerCase().includes(searchLower);
 
-    const matchCategorie = resource.categories?.[0]?.libelle.toLowerCase().includes(searchLower);
+    const matchCategorie = resource.categories?.[0]?.libelle
+      .toLowerCase()
+      .includes(searchLower);
 
     if (filterBy === "titre") return matchTitre;
     if (filterBy === "categorie") return matchCategorie;
@@ -43,9 +49,7 @@ export default function ResourcesPage() {
         ]}
       />
       <ResourcesCard resources={filteredResources} />
-      {isAuth && (
-        <CreateButton url="/resource/new"/>
-      )}
+      {isAuth && <CreateButton url="/resource/new" />}
     </main>
   );
 }
