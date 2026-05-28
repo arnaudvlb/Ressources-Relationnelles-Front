@@ -2,9 +2,8 @@
 import styles from "@/components/Messagerie/Page.module.css";
 import { MessagerieErrorProps } from "@/types/components/messagerie/MessagerieErrorProps"
 
+export default function MessagerieError({error}:Readonly<MessagerieErrorProps>){
 
-
-export default function MessagerieError({error}:MessagerieErrorProps){
     return(
          <main className={styles.messagesPage}>
         <section className={styles.emptyState}>

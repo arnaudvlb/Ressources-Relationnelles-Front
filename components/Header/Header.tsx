@@ -76,7 +76,7 @@ export default function Header() {
                 </li>
               </>
             )}
-
+            <li><Link href="/resources">Ressources</Link></li>
             {isAuth && (
               <>
                 <li>
@@ -91,7 +91,6 @@ export default function Header() {
                 </li>
               </>
             )}
-            <li><Link href="/resources">Ressources</Link></li>
             {isAuth && (
               <>
                 <li>
@@ -136,7 +135,7 @@ export default function Header() {
                 </li>
               </>
             )}
-
+            <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
              {isAuth && (
               <>
                 <li>
@@ -151,8 +150,6 @@ export default function Header() {
                 </li>
               </>
             )}
-            
-            <li><Link href="/resources" onClick={() => setMenuOpen(false)}>Ressources</Link></li>
             {isAuth && (
               <>
                 <li>
