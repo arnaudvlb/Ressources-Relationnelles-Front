@@ -1,5 +1,6 @@
 "use client";
 
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import BackButton from "@/components/ui/BackButton/BackButton";
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
@@ -18,8 +19,6 @@ export default function editCategorie() {
   const router = useRouter();
   const { isAdmin } = useAuth();
 
-  if (!isAdmin) return; 
-
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putCategorie({
       libelle: formData.libelle,
@@ -33,6 +32,8 @@ export default function editCategorie() {
       }, 1500);
     }
   };
+
+  if (!isAdmin) return <AccessDenied/>; 
 
   if (loading) return <p>Chargement...</p>;
 

@@ -1,6 +1,7 @@
 "use client";
 
 import CategoriesCard from "@/components/CategoriesCard/CategoriesCard";
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import CreateButton from "@/components/ui/CreateButton/CreateButton";
 import Filter from "@/components/ui/Filter/Filter";
 import { useCategories } from "@/hooks/categories/useCategories";
@@ -13,8 +14,6 @@ export default function CategoriesPage() {
   const [filterBy, setFilterBy] = useState("all");
   const { isAdmin } = useAuth();
 
-  if (!isAdmin) return;
-
   const filteredCategories = categories.filter((categorie) => {
     const searchLower = search.toLowerCase();
 
@@ -24,6 +23,8 @@ export default function CategoriesPage() {
 
     return matchLibelle;
   });
+
+  if (!isAdmin) return <AccessDenied/>;
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;

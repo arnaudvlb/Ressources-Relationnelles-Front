@@ -1,5 +1,6 @@
 "use client";
 
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import BackButton from "@/components/ui/BackButton/BackButton";
 import UtilisateurView from "@/components/UtilisateurView/UtilisateurView";
 import { useAuth } from "@/hooks/useAuth";
@@ -12,7 +13,7 @@ export default function viewUtilisateur() {
   const { utilisateur, loading, error } = useUtilisateur(id);
   const { isAdmin } = useAuth();
 
-  if (id !== localStorage.getItem("userId") && !isAdmin) return;
+  if (id !== localStorage.getItem("userId") && !isAdmin) return <AccessDenied/>;
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;

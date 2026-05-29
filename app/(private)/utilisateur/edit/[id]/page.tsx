@@ -1,5 +1,6 @@
 "use client";
 
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import BackButton from "@/components/ui/BackButton/BackButton";
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
@@ -20,7 +21,7 @@ export default function alterUtilisateur() {
   const router = useRouter();
   const { isAdmin } = useAuth();
 
-  if (id !== localStorage.getItem("userId") && !isAdmin) return; 
+  if (id !== localStorage.getItem("userId") && !isAdmin) return <AccessDenied/>; 
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putUtilisateur({

@@ -1,5 +1,6 @@
 "use client";
 
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
 import { useCategories } from "@/hooks/categories/useCategories";
@@ -12,8 +13,6 @@ export default function newResourcePage() {
   const { categories } = useCategories();
   const { isAuth } = useAuth();
   const router = useRouter();
-
-  if (!isAuth) return;
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await createRessource({
@@ -33,6 +32,8 @@ export default function newResourcePage() {
       });
     }
   };
+
+  if (!isAuth) return <AccessDenied/>;
 
   if (loading) return <p>Chargement...</p>;
 

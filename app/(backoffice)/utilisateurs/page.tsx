@@ -1,5 +1,6 @@
 "use client";
 
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import Filter from "@/components/ui/Filter/Filter";
 import UtilisateursCard from "@/components/UtilisateursCard/UtilisateursCard";
 import { useAuth } from "@/hooks/useAuth";
@@ -11,8 +12,6 @@ export default function UtilisateursPage() {
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("all");
   const { isAdmin } = useAuth();
-
-  if (!isAdmin) return;
 
   const filteredUtilisateurs = utilisateurs.filter((utilisateur) => {
     const searchLower = search.toLowerCase();
@@ -31,6 +30,8 @@ export default function UtilisateursPage() {
 
     return matchNom || matchRole || matchMail;
   });
+
+  if (!isAdmin) return <AccessDenied/>;
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;

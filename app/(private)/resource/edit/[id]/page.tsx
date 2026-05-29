@@ -1,5 +1,6 @@
 "use client";
 
+import AccessDenied from "@/components/ui/AccessDenied/AccessDenied";
 import Form from "@/components/ui/Form/Form";
 import FormMessage from "@/components/ui/FormMessage/FormMessage";
 import { useCategories } from "@/hooks/categories/useCategories";
@@ -16,8 +17,6 @@ export default function newResourcePage() {
   const { categories } = useCategories();
   const { isAuth, isModo } = useAuth();
   const router = useRouter();
-
-  if (!isAuth && localStorage.getItem("userId") != String(resource?.utilisateur.id) && !isModo) return;
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putRessource({
@@ -40,6 +39,8 @@ export default function newResourcePage() {
       });
     }
   };
+
+  if (!isAuth && localStorage.getItem("userId") != String(resource?.utilisateur.id) && !isModo) return <AccessDenied/>;
 
   if (loading) return <p>Chargement...</p>;
 
