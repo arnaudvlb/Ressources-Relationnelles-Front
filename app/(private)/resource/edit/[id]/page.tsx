@@ -22,7 +22,9 @@ export default function newResourcePage() {
     const res = await putRessource({
       titre: formData.titre,
       contenu: formData.Contenu,
-      valide: resource?.valide ?? Boolean(formData.valide),
+      valide: isModo
+        ? Boolean(Number(formData.valide))
+        : (resource?.valide ?? false),
       date_creation: resource?.dateCreation ?? new Date().toISOString(),
       visibilite: formData.visibilite,
       utilisateur:
@@ -40,7 +42,12 @@ export default function newResourcePage() {
     }
   };
 
-  if (!isAuth && localStorage.getItem("userId") != String(resource?.utilisateur.id) && !isModo) return <AccessDenied/>;
+  if (
+    !isAuth &&
+    localStorage.getItem("userId") != String(resource?.utilisateur.id) &&
+    !isModo
+  )
+    return <AccessDenied />;
 
   if (loading) return <p>Chargement...</p>;
 
@@ -52,7 +59,9 @@ export default function newResourcePage() {
           titreForm="Modifier une ressource"
           champs={["Titre"]}
           names={["titre"]}
-          buttonText={loading ? "Modification..." : "Modification de la ressource"}
+          buttonText={
+            loading ? "Modification..." : "Modification de la ressource"
+          }
           placeHolders={["Titre"]}
           textAreas={["Contenu"]}
           onSubmit={handleSubmit}

@@ -17,7 +17,6 @@ export default function ResourcesCard({
 }: Readonly<ResourcesCardProps>) {
   const { isAuth, isAdmin, userName } = useAuth();
   const { deleteRessource } = useDeleteRessource(0);
-  console.log(resources);
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => (

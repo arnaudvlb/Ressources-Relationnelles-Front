@@ -70,7 +70,7 @@ export default function alterUtilisateur() {
             "telephone",
             "email",
             "pseudo",
-            "password",
+            "plainPassword",
           ]}
           buttonText={loading ? "Mise à jour..." : "Mettre à jour les données"}
           placeHolders={[
