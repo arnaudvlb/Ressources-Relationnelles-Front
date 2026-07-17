@@ -24,7 +24,7 @@ export default function newResourcePage() {
       contenu: formData.Contenu,
       valide: isModo
         ? Boolean(Number(formData.valide))
-        : (resource?.valide ?? false),
+        : (Boolean(resource?.valide) ?? false),
       date_creation: resource?.dateCreation ?? new Date().toISOString(),
       visibilite: formData.visibilite,
       utilisateur:

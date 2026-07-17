@@ -15,7 +15,7 @@ export default async function getRegister(
   telephone: string,
   pseudo: string,
 ): Promise<RegisterData> {
-  const res = await fetch("http://localhost:8000/register", {
+  const res = await fetch("/api/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -34,7 +34,7 @@ export default function alterUtilisateur() {
       statusCompte: Boolean(formData.statusCompte) ?? utilisateur?.statusCompte,
       dateCreation: utilisateur?.dateCreation ?? new Date().toISOString(),
       role: formData.role != null ? `/api/roles_utilisateurs/${formData.role}` : `/api/roles_utilisateurs/${utilisateur?.role.id}`,
-      plainPassword: formData.plainPassword,
+      plainPassword: formData.password,
     });
 
     if (res) {
@@ -70,7 +70,7 @@ export default function alterUtilisateur() {
             "telephone",
             "email",
             "pseudo",
-            "plainPassword",
+            "password",
           ]}
           buttonText={loading ? "Mise à jour..." : "Mettre à jour les données"}
           placeHolders={[
