@@ -157,20 +157,6 @@ export default function Aside({
     console.log(" Fin handleToggleFavori ajout");
   }
 
-  console.log(" Aside rendu", {
-    resourceId,
-    adorers,
-    favoris,
-    partages,
-    consultations,
-    isLiked,
-    isFavoris,
-    adorerId,
-    favoriId,
-    tags,
-    categorie,
-  });
-
   return (
     <aside className={styles.resourceAside}>
       <div className={styles.actions}>
