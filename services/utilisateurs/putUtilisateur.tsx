@@ -32,7 +32,6 @@ export default async function putUtilisateur(
       plainPassword
     }),
   });
-  console.log(plainPassword)
 
   if (!res.ok) {
     if (res.status === 400) {
