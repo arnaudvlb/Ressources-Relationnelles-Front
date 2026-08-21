@@ -8,15 +8,24 @@ import { usePutRessource } from "@/hooks/ressources/usePutRessource";
 import { useRessource } from "@/hooks/ressources/useRessource";
 import { useAuth } from "@/hooks/useAuth";
 import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function newResourcePage() {
   const params = useParams();
   const id = params.id as string;
+
   const { putRessource, loading, error } = usePutRessource(id);
   const { resource } = useRessource(id);
   const { categories } = useCategories();
   const { isAuth, isModo } = useAuth();
+
   const router = useRouter();
+
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setUserId(localStorage.getItem("userId"));
+  }, []);
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putRessource({
@@ -30,9 +39,8 @@ export default function newResourcePage() {
       utilisateur:
         resource?.utilisateur.id ?? Number(localStorage.getItem("userId")),
       categorie: formData.categorie,
-      tags: resource?.tagsRessources.map((tag) => `/api/tags/${tag.id}`) ?? [
-        "",
-      ],
+      tags:
+        resource?.tagsRessources.map((tag) => `/api/tags/${tag.id}`) ?? [""],
     });
 
     if (res) {
@@ -44,16 +52,18 @@ export default function newResourcePage() {
 
   if (
     !isAuth &&
-    localStorage.getItem("userId") != String(resource?.utilisateur.id) &&
+    userId != String(resource?.utilisateur.id) &&
     !isModo
-  )
+  ) {
     return <AccessDenied />;
+  }
 
   if (loading) return <p>Chargement...</p>;
 
   return (
     <>
       {error && <FormMessage message={error} />}
+
       <div className="page">
         <Form
           titreForm="Modifier une ressource"

@@ -5,15 +5,23 @@ import CreateButton from "@/components/ui/CreateButton/CreateButton";
 import Filter from "@/components/ui/Filter/Filter";
 import { useRessources } from "@/hooks/ressources/useRessources";
 import { useAuth } from "@/hooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ResourcesPage() {
   const { resources, loading, error } = useRessources();
   const { isAuth, isModo } = useAuth();
+
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("all");
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
-  const currentUserId = Number(localStorage.getItem("userId"));
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+
+    if (userId) {
+      setCurrentUserId(Number(userId));
+    }
+  }, []);
 
   const filteredResources = resources
     .filter((resource) => {
@@ -23,7 +31,9 @@ export default function ResourcesPage() {
 
       const searchLower = search.toLowerCase();
 
-      const matchTitre = resource.titre.toLowerCase().includes(searchLower);
+      const matchTitre = resource.titre
+        .toLowerCase()
+        .includes(searchLower);
 
       const matchCategorie = resource.categorie.libelle
         .toLowerCase()
@@ -53,9 +63,11 @@ export default function ResourcesPage() {
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
+
   return (
     <main className="page">
       <h1 className="pageTitle">Ressources</h1>
+
       <Filter
         value={search}
         onChange={setSearch}
@@ -67,7 +79,9 @@ export default function ResourcesPage() {
           { label: "Catégorie", value: "categorie" },
         ]}
       />
+
       <ResourcesCard resources={filteredResources} />
+
       {isAuth && <CreateButton url="/resource/new" />}
     </main>
   );
