@@ -1,5 +1,5 @@
 
-name: Front - E2E
+name: Front - Lighthouse
 
 
 on:
@@ -19,11 +19,13 @@ on:
 
 
 jobs:
-  e2e:
-    name: Tests E2E Playwright
+
+  lighthouse:
+    name: Audit Lighthouse
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Récupération du code
         uses: actions/checkout@v4
 
@@ -36,16 +38,5 @@ jobs:
       - name: Installation des dépendances
         run: npm ci
 
-      - name: Installation de Chromium
-        run: npx playwright install --with-deps chromium
-
-      - name: Tests Playwright
-        run: npm run test:e2e
-
-      - name: Sauvegarde du rapport Playwright
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report/
-          if-no-files-found: ignore
+      - name: Audit Lighthouse
+        run: npm run lighthouse
