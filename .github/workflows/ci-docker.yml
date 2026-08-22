@@ -36,3 +36,7 @@ jobs:
           file: ./Dockerfile
           push: false
           tags: ressources-relationnelles-front:ci
+
+          # ajout du cache pour aller plus vite
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
