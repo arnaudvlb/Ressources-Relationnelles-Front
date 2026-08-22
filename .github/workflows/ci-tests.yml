@@ -1,0 +1,49 @@
+
+name: Front - Tests
+
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+      - "Chore/**"
+      - "chore/**"
+      - "feat/**"
+      - "fix/**"
+  pull_request:
+    branches:
+      - dev
+      - main
+
+
+
+jobs:
+
+  tests:
+    name: Tests unitaires Jest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Installation de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installation des dépendances
+        run: npm ci
+
+      - name: Tests unitaires
+        run: npm run test:ci 
+
+
+      # Etape pour remplacer les tests une fois les tests implementé
+
+      # - name: Tests avec couverture
+      #   run: npm run test:coverage
+
+  
