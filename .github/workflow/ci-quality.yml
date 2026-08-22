@@ -1,13 +1,15 @@
 
 name: Front - Quality
 
-
-
 on:
   push:
     branches:
       - dev
       - main
+      - "Chore/**"
+      - "chore/**"
+      - "feat/**"
+      - "fix/**"
   pull_request:
     branches:
       - dev
