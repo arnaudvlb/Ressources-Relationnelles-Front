@@ -2,12 +2,17 @@
   "name": "ressources-relationnelles-front",
   "version": "0.1.0",
   "private": true,
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
   },
+
   "dependencies": {
     "next": "16.1.6",
     "react": "19.2.3",
