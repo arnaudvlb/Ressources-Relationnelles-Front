@@ -15,7 +15,6 @@ export default async function putRessource(
   const res = await apiFetch(`/api/ressources/${id}`, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({

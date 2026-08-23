@@ -9,7 +9,6 @@ export default async function putCategorie(
   const res = await apiFetch(`/api/categories/${id}`, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({

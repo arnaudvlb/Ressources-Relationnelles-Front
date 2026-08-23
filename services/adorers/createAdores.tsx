@@ -17,7 +17,6 @@ export default async function createAdorer(
     headers: {
       Accept: "application/json",
       "Content-Type": "application/ld+json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(payload),
   });
