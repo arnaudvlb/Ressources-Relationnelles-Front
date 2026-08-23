@@ -1,4 +1,5 @@
 import { Message } from "@/types/database/message";
+import { apiFetch } from "../apiFetch";
 
 export type CreateMessagePayload = {
   contenu: string;
@@ -12,7 +13,7 @@ export default async function createMessage(
   payload: CreateMessagePayload
 ): Promise<Message> {
 
-  const response = await fetch("/api/messages", {
+  const response = await apiFetch("/api/messages", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -1,4 +1,5 @@
 import { Commentaire } from "@/types/database/commentaires";
+import { apiFetch } from "../apiFetch";
 
 export default async function createCommentaire(
   contenu: string,
@@ -7,7 +8,7 @@ export default async function createCommentaire(
   resource: string,
   commentaireParent: string | null
 ): Promise<Commentaire> {
-  const res = await fetch("/api/commentaires", {
+  const res = await apiFetch("/api/commentaires", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

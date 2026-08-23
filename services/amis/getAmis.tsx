@@ -1,4 +1,5 @@
 import { Ami } from "@/types/database/amis";
+import { apiFetch } from "../apiFetch";
 
 type Collection<T> = {
   member?: T[];
@@ -6,7 +7,7 @@ type Collection<T> = {
 };
 
 export default async function getAmis(): Promise<Ami[]> {
- const res = await fetch("/api/amis/", {
+ const res = await apiFetch("/api/amis/", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

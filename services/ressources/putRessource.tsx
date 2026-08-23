@@ -1,4 +1,5 @@
 import { Ressource } from "@/types/database/ressources";
+import { apiFetch } from "../apiFetch";
 
 export default async function putRessource(
   id: string,
@@ -11,7 +12,7 @@ export default async function putRessource(
   categorie: string,
   tags: string[],
 ): Promise<Ressource> {
-  const res = await fetch(`/api/ressources/${id}`, {
+  const res = await apiFetch(`/api/ressources/${id}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

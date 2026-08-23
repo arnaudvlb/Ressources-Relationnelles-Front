@@ -1,3 +1,5 @@
+import { apiFetch } from "../apiFetch";
+
 export type CreateFavoriPayload = {
   utilisateur: string;
   resource: string;
@@ -6,7 +8,7 @@ export type CreateFavoriPayload = {
 export default async function createFavori(
   payload: CreateFavoriPayload
 ): Promise<any> {
-  const res = await fetch("/api/favoris", {
+  const res = await apiFetch("/api/favoris", {
     method: "POST",
     headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -5,7 +5,9 @@ export async function getCsrfToken(): Promise<string> {
     return csrfToken;
   }
 
-  const response = await fetch("/api/csrf-token");
+  const response = await fetch("/api/csrf-token", {
+    credentials: "include",
+  });
 
   if (!response.ok) {
     throw new Error(

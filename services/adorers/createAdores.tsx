@@ -1,4 +1,5 @@
 import { Adorer } from "@/types/database/adorers";
+import { apiFetch } from "../apiFetch";
 
 export type CreateAdorerPayload = {
   dateAdorer: string;
@@ -11,7 +12,7 @@ export default async function createAdorer(
 ): Promise<Adorer> {
   const token = localStorage.getItem("token");
 
-  const res = await fetch("/api/adorers", {
+  const res = await apiFetch("/api/adorers", {
     method: "POST",
     headers: {
       Accept: "application/json",

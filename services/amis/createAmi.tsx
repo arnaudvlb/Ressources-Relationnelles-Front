@@ -1,4 +1,5 @@
 import { Ami } from "@/types/database/amis";
+import { apiFetch } from "../apiFetch";
 
 export type CreateAmiPayload = {
   statut: string;
@@ -12,7 +13,7 @@ export type CreateAmiPayload = {
 export default async function createAmi(
   payload: CreateAmiPayload
 ): Promise<Ami> {
-  const res = await fetch("/api/amis", {
+  const res = await apiFetch("/api/amis", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

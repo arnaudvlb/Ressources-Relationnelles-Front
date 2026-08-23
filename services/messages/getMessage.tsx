@@ -1,8 +1,9 @@
 import { Message } from "@/types/database/message";
+import { apiFetch } from "../apiFetch";
 
 
 export default async function getMessages(): Promise<Message[]> {
- const res = await fetch("/api/messages", {
+ const res = await apiFetch("/api/messages", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

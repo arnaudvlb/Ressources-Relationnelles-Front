@@ -1,4 +1,5 @@
 import { User } from "@/types/database/users";
+import { apiFetch } from "../apiFetch";
 
 export default async function putUtilisateur(
   id: string,
@@ -13,7 +14,7 @@ export default async function putUtilisateur(
   role: string,
   plainPassword: string
 ): Promise<User> {
-  const res = await fetch(`/api/utilisateurs/${id}`, {
+  const res = await apiFetch(`/api/utilisateurs/${id}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

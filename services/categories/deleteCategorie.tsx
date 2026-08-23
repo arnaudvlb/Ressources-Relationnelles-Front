@@ -1,5 +1,7 @@
+import { apiFetch } from "../apiFetch";
+
 export default async function deleteCategorie(id: number | null): Promise<void> {
-  const res = await fetch(`/api/categories/${id}`, {
+  const res = await apiFetch(`/api/categories/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
