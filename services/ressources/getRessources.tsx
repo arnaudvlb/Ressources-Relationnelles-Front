@@ -1,4 +1,5 @@
 import { Ressource } from "@/types/database/ressources";
+import { apiFetch } from "../apiFetch";
 
 type Collection<T> = {
   member?: T[];
@@ -6,7 +7,7 @@ type Collection<T> = {
 };
 
 export default async function getRessources(): Promise<Ressource[]> {
-  const res = await fetch("/api/ressources");
+  const res = await apiFetch("/api/ressources");
   if (!res.ok) throw new Error(`Erreur API: ${res.status}`);
 
   const data: Collection<Ressource> = await res.json();

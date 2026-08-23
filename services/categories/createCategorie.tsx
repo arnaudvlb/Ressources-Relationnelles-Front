@@ -1,10 +1,11 @@
 import { Categorie } from "@/types/database/categories";
+import { apiFetch } from "../apiFetch";
 
-export default async function createRessource(
+export default async function createCategorie(
   libelle: string,
   couleur: string,
 ): Promise<Categorie> {
-  const res = await fetch("/api/categories", {
+  const res = await apiFetch("/api/categories", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

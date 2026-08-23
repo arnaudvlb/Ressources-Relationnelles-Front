@@ -1,11 +1,12 @@
 import { Categorie } from "@/types/database/categories";
+import { apiFetch } from "../apiFetch";
 
 export default async function putCategorie(
   id: string,
   libelle: string,
   couleur: string,
 ): Promise<Categorie> {
-  const res = await fetch(`/api/categories/${id}`, {
+  const res = await apiFetch(`/api/categories/${id}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

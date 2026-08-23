@@ -1,3 +1,5 @@
+import { apiFetch } from "../apiFetch";
+
 export type CreateConsultationPayload = {
   utilisateur: string | null;
   resource: string;
@@ -6,7 +8,7 @@ export type CreateConsultationPayload = {
 export default async function createConsultation(
   payload: CreateConsultationPayload
 ): Promise<any> {
-  const res = await fetch("/api/consultations", {
+  const res = await apiFetch("/api/consultations", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
