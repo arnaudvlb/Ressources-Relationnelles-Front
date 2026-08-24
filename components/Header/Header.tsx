@@ -4,12 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { useAuth } from "@/hooks/useAuth";
-import { Ami } from "../../types/database/amis";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
-  const { isAuth, isAdmin } = useAuth();
+  const { isAuth, isAdmin, userId } = useAuth();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -96,7 +95,7 @@ export default function Header() {
             {isAuth && (
               <>
                 <li>
-                  <Link href={`/utilisateur/${localStorage.getItem("userId")}`}>
+                  <Link href={`/utilisateur/${userId}`}>
                     Compte utilisateur
                   </Link>
                 </li>
@@ -172,7 +171,7 @@ export default function Header() {
               <>
                 <li>
                   <Link
-                    href={`/utilisateur/${localStorage.getItem("userId")}`}
+                    href={`/utilisateur/${userId}`}
                     onClick={() => setMenuOpen(false)}
                   >
                     Compte utilisateur

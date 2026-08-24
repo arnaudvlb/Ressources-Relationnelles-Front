@@ -12,9 +12,11 @@ import { PageProps } from "@/types/components/resource/PageProps";
 import { useCreateConsultation } from "@/hooks/consultations/useCreateConsultation";
 
 import styles from "@/components/Resource/Page/Page.module.css";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Page({ resource }: Readonly<PageProps>) {
-  
+  const { isAuth, userId } = useAuth();
+
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isFavoris, setIsFavoris] = useState<boolean>(false);
 
@@ -24,7 +26,7 @@ export default function Page({ resource }: Readonly<PageProps>) {
   const [adorersCount, setAdorersCount] = useState(resource.adorers.length);
   const [favorisCount, setFavorisCount] = useState(resource.favoris.length);
   const [consultationsCount, setConsultationsCount] = useState(
-    resource.consultations.length
+    resource.consultations.length,
   );
 
   const { createConsultation } = useCreateConsultation();
@@ -37,10 +39,8 @@ export default function Page({ resource }: Readonly<PageProps>) {
 
       consultationCreated.current = true;
 
-      const userId = localStorage.getItem("userId");
-
       const consultation = await createConsultation({
-        utilisateur: userId ? `/api/utilisateurs/${userId}` : null,
+        utilisateur: isAuth && userId ? `/api/utilisateurs/${userId}` : null,
         resource: `/api/ressources/${resource.id}`,
       });
 
@@ -50,20 +50,17 @@ export default function Page({ resource }: Readonly<PageProps>) {
     }
 
     addConsultation();
-  }, [createConsultation, resource.id]);
+  }, [createConsultation, resource.id, isAuth, userId]);
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
-    const currentUserId = storedUserId ? Number(storedUserId) : null;
-
-    if (!currentUserId) return;
+    if (!isAuth || !userId) return;
 
     const existingLike = resource.adorers.find(
-      (adorer) => adorer.utilisateur.id === currentUserId
+      (adorer) => adorer.utilisateur.id === userId,
     );
 
     const existingFavori = resource.favoris.find(
-      (favori) => favori.utilisateur.id === currentUserId
+      (favori) => favori.utilisateur.id === userId,
     );
 
     if (existingLike) {
@@ -75,7 +72,7 @@ export default function Page({ resource }: Readonly<PageProps>) {
       setIsFavoris(true);
       setFavoriId(existingFavori.id);
     }
-  }, [resource]);
+  }, [resource, isAuth, userId]);
 
   return (
     <div className={styles.resourcePage}>
@@ -111,7 +108,10 @@ export default function Page({ resource }: Readonly<PageProps>) {
           categorie={resource.categorie}
         />
 
-        <Comment commentaires={resource.commentaires} ressourceId={resource.id} />
+        <Comment
+          commentaires={resource.commentaires}
+          ressourceId={resource.id}
+        />
       </div>
     </div>
   );

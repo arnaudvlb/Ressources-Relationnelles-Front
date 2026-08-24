@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 export default function newResourcePage() {
   const { createRessource, loading, error } = useCreateRessource();
   const { categories } = useCategories();
-  const { isAuth } = useAuth();
+  const { isAuth, userId } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (formData: Record<string, string>) => {
@@ -21,7 +21,7 @@ export default function newResourcePage() {
       valide: false,
       date_creation: new Date().toISOString(),
       visibilite: formData.visibilite,
-      utilisateur: Number(localStorage.getItem("userId")),
+      utilisateur: Number(userId),
       categorie: formData.categorie,
       tags: [""],
     });

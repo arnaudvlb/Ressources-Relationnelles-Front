@@ -11,7 +11,6 @@ export default async function createFavori(
   const res = await apiFetch("/api/favoris", {
     method: "POST",
     headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify(payload),

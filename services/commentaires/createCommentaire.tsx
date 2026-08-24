@@ -11,7 +11,6 @@ export default async function createCommentaire(
   const res = await apiFetch("/api/commentaires", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({

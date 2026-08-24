@@ -9,15 +9,13 @@ import { useEffect, useState } from "react";
 
 export default function ResourcesPage() {
   const { resources, loading, error } = useRessources();
-  const { isAuth, isModo } = useAuth();
+  const { isAuth, isModo, userId } = useAuth();
 
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("all");
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-
     if (userId) {
       setCurrentUserId(Number(userId));
     }

@@ -8,7 +8,6 @@ import { usePutRessource } from "@/hooks/ressources/usePutRessource";
 import { useRessource } from "@/hooks/ressources/useRessource";
 import { useAuth } from "@/hooks/useAuth";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function newResourcePage() {
   const params = useParams();
@@ -17,15 +16,9 @@ export default function newResourcePage() {
   const { putRessource, loading, error } = usePutRessource(id);
   const { resource } = useRessource(id);
   const { categories } = useCategories();
-  const { isAuth, isModo } = useAuth();
+  const { isAuth, isModo, userId } = useAuth();
 
   const router = useRouter();
-
-  const [userId, setUserId] = useState<string | null>(null);
-
-  useEffect(() => {
-    setUserId(localStorage.getItem("userId"));
-  }, []);
 
   const handleSubmit = async (formData: Record<string, string>) => {
     const res = await putRessource({
@@ -37,7 +30,7 @@ export default function newResourcePage() {
       date_creation: resource?.dateCreation ?? new Date().toISOString(),
       visibilite: formData.visibilite,
       utilisateur:
-        resource?.utilisateur.id ?? Number(localStorage.getItem("userId")),
+        resource?.utilisateur.id ?? Number(userId),
       categorie: formData.categorie,
       tags:
         resource?.tagsRessources.map((tag) => `/api/tags/${tag.id}`) ?? [""],
@@ -51,9 +44,9 @@ export default function newResourcePage() {
   };
 
   if (
-    !isAuth &&
-    userId != String(resource?.utilisateur.id) &&
-    !isModo
+    !isAuth ||
+    (userId != Number(resource?.utilisateur.id) &&
+    !isModo)
   ) {
     return <AccessDenied />;
   }

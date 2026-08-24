@@ -16,7 +16,6 @@ export default async function createMessage(
   const response = await apiFetch("/api/messages", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify(payload),
