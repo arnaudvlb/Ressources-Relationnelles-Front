@@ -7,7 +7,6 @@ import EditButton from "../ui/EditButton/EditButton";
 import { useAuth } from "@/hooks/useAuth";
 import DeleteButton from "../ui/DeleteButton/DeleteButton";
 import { useDeleteRessource } from "@/hooks/ressources/useDeleteRessource";
-import { useEffect, useState } from "react";
 
 function truncate(text: string, max: number) {
   return text?.length > max ? text.slice(0, max) + "..." : text;
@@ -16,28 +15,18 @@ function truncate(text: string, max: number) {
 export default function ResourcesCard({
   resources,
 }: Readonly<ResourcesCardProps>) {
-  const { isAuth, isAdmin, userName } = useAuth();
+  const { isAuth, isAdmin, userName, userId } = useAuth();
   const { deleteRessource } = useDeleteRessource(0);
-
-  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
-
-  useEffect(() => {
-    const userId = localStorage.getItem("userId");
-
-    if (userId) {
-      setCurrentUserId(Number(userId));
-    }
-  }, []);
 
   return (
     <div className={styles.cardGrid}>
       {resources.map((resource) => {
         const isFavorite = resource.favoris.some(
-          (favori) => favori.utilisateur.id === currentUserId,
+          (favori) => favori.utilisateur.id === userId,
         );
 
         const isLiked = resource.adorers.some(
-          (adorer) => adorer.utilisateur.id === currentUserId,
+          (adorer) => adorer.utilisateur.id === userId,
         );
 
         return (

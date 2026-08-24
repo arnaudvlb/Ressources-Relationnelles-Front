@@ -10,7 +10,6 @@ export type CreateAdorerPayload = {
 export default async function createAdorer(
   payload: CreateAdorerPayload
 ): Promise<Adorer> {
-  const token = localStorage.getItem("token");
 
   const res = await apiFetch("/api/adorers", {
     method: "POST",

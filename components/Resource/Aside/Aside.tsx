@@ -7,6 +7,7 @@ import { useCreateFavori } from "@/hooks/favoris/useCreateFavori";
 import { useDeleteFavori } from "@/hooks/favoris/useDeleteFavori";
 import { useCreateAdorer } from "@/hooks/adorers/useCreateAdorers";
 import { useDeleteAdorer } from "@/hooks/adorers/useDeleteAdorers";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Aside({
   resourceId,
@@ -33,35 +34,24 @@ export default function Aside({
   const { createFavori } = useCreateFavori();
   const { deleteFavori } = useDeleteFavori();
 
+  const { isAuth, userId } = useAuth();
+
   async function handleToggleLike() {
- 
-
-    const storedUserId = localStorage.getItem("userId");
-    const currentUserId = storedUserId ? Number(storedUserId) : null;
-
-   
-
-    if (!currentUserId) {
-     
+    if (!isAuth || !userId) {
       return;
     }
 
     if (isLiked && adorerId) {
-      
-
       try {
         const deleted = await deleteAdorer(adorerId);
-
-       
 
         if (deleted) {
           setIsLiked(false);
           setAdorerId(null);
           setAdorersCount((prev) => Math.max(prev - 1, 0));
-
         }
       } catch (error) {
-        console.log(" Erreur pendant deleteAdorer :", error);
+        console.log("Erreur pendant deleteAdorer :", error);
       }
 
       return;
@@ -69,92 +59,60 @@ export default function Aside({
 
     const payload = {
       dateAdorer: new Date().toISOString(),
-      utilisateur: `/api/utilisateurs/${currentUserId}`,
+      utilisateur: `/api/utilisateurs/${userId}`,
       resource: `/api/ressources/${resourceId}`,
     };
 
-
     try {
       const created = await createAdorer(payload);
-
-     
 
       if (created) {
         setIsLiked(true);
         setAdorerId(created.id);
         setAdorersCount((prev) => prev + 1);
-
-      } else {
-        console.log(" createAdorer a retourné null ou undefined");
       }
     } catch (error) {
-      console.log(" Erreur pendant createAdorer :", error);
+      console.log("Erreur pendant createAdorer :", error);
     }
-
-    console.log("Fin handleToggleLike ajout");
   }
 
   async function handleToggleFavori() {
-    
-
-    const storedUserId = localStorage.getItem("userId");
-    const currentUserId = storedUserId ? Number(storedUserId) : null;
-
-  
-
-    if (!currentUserId) {
-      console.log("Aucun utilisateur connecté, arrêt du favori.");
+    if (!isAuth || !userId) {
       return;
     }
 
     if (isFavoris && favoriId) {
-     
-
       try {
         const deleted = await deleteFavori(favoriId);
-
-      
 
         if (deleted) {
           setIsFavoris(false);
           setFavoriId(null);
           setFavorisCount((prev) => Math.max(prev - 1, 0));
-
-         
         }
       } catch (error) {
         console.log("Erreur pendant deleteFavori :", error);
       }
 
-   
       return;
     }
 
     const payload = {
-      utilisateur: `/api/utilisateurs/${currentUserId}`,
+      utilisateur: `/api/utilisateurs/${userId}`,
       resource: `/api/ressources/${resourceId}`,
     };
-
-
 
     try {
       const created = await createFavori(payload);
 
-     
       if (created) {
         setIsFavoris(true);
         setFavoriId(created.id);
         setFavorisCount((prev) => prev + 1);
-
-      
-      } else {
-        console.log(" createFavori a retourné null ou undefined");
       }
     } catch (error) {
-      console.log(" Erreur pendant createFavori :", error);
+      console.log("Erreur pendant createFavori :", error);
     }
-
-    console.log(" Fin handleToggleFavori ajout");
   }
 
   return (
@@ -170,7 +128,6 @@ export default function Aside({
           <span>{isLiked ? "❤️" : "🤍"}</span>
           <span>{adorers}</span>
         </button>
-
 
         <button type="button" className={styles.actionBtn}>
           <span>👁️</span>
@@ -203,9 +160,7 @@ export default function Aside({
 
       <div className={styles.resourceCard}>
         <strong>Catégories</strong>
-          <p style={{ color: categorie.couleur }}>
-            {categorie.libelle}
-          </p>
+        <p style={{ color: categorie.couleur }}>{categorie.libelle}</p>
       </div>
     </aside>
   );
