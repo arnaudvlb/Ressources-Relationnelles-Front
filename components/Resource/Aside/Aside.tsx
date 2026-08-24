@@ -42,16 +42,12 @@ export default function Aside({
     }
 
     if (isLiked && adorerId) {
-      try {
-        const deleted = await deleteAdorer(adorerId);
+      const deleted = await deleteAdorer(adorerId);
 
-        if (deleted) {
-          setIsLiked(false);
-          setAdorerId(null);
-          setAdorersCount((prev) => Math.max(prev - 1, 0));
-        }
-      } catch (error) {
-        console.log("Erreur pendant deleteAdorer :", error);
+      if (deleted) {
+        setIsLiked(false);
+        setAdorerId(null);
+        setAdorersCount((prev) => Math.max(prev - 1, 0));
       }
 
       return;
@@ -63,16 +59,12 @@ export default function Aside({
       resource: `/api/ressources/${resourceId}`,
     };
 
-    try {
-      const created = await createAdorer(payload);
+    const created = await createAdorer(payload);
 
-      if (created) {
-        setIsLiked(true);
-        setAdorerId(created.id);
-        setAdorersCount((prev) => prev + 1);
-      }
-    } catch (error) {
-      console.log("Erreur pendant createAdorer :", error);
+    if (created) {
+      setIsLiked(true);
+      setAdorerId(created.id);
+      setAdorersCount((prev) => prev + 1);
     }
   }
 
@@ -82,7 +74,6 @@ export default function Aside({
     }
 
     if (isFavoris && favoriId) {
-      try {
         const deleted = await deleteFavori(favoriId);
 
         if (deleted) {
@@ -90,9 +81,6 @@ export default function Aside({
           setFavoriId(null);
           setFavorisCount((prev) => Math.max(prev - 1, 0));
         }
-      } catch (error) {
-        console.log("Erreur pendant deleteFavori :", error);
-      }
 
       return;
     }
@@ -101,17 +89,12 @@ export default function Aside({
       utilisateur: `/api/utilisateurs/${userId}`,
       resource: `/api/ressources/${resourceId}`,
     };
+    const created = await createFavori(payload);
 
-    try {
-      const created = await createFavori(payload);
-
-      if (created) {
-        setIsFavoris(true);
-        setFavoriId(created.id);
-        setFavorisCount((prev) => prev + 1);
-      }
-    } catch (error) {
-      console.log("Erreur pendant createFavori :", error);
+    if (created) {
+      setIsFavoris(true);
+      setFavoriId(created.id);
+      setFavorisCount((prev) => prev + 1);
     }
   }
 
