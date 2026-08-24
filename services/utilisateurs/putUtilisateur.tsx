@@ -17,7 +17,6 @@ export default async function putUtilisateur(
   const res = await apiFetch(`/api/utilisateurs/${id}`, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({

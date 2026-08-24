@@ -6,7 +6,6 @@ export default async function getMessages(): Promise<Message[]> {
  const res = await apiFetch("/api/messages", {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
     },
   });

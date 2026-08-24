@@ -8,7 +8,6 @@ export default async function createCategorie(
   const res = await apiFetch("/api/categories", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/ld+json",
     },
     body: JSON.stringify({

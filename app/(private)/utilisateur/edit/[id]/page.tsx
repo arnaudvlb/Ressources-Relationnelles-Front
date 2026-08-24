@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 
 export default function alterUtilisateur() {
   const [message, setMessage] = useState("");
-  const [userId, setUserId] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
 
   const params = useParams();
@@ -23,10 +22,9 @@ export default function alterUtilisateur() {
   const { putUtilisateur, loading, error } = usePutUtilisateur(id);
   const { roles } = useRoles();
   const router = useRouter();
-  const { isAdmin } = useAuth();
+  const { isAdmin, userId } = useAuth();
 
   useEffect(() => {
-    setUserId(localStorage.getItem("userId"));
     setMounted(true);
   }, []);
 
@@ -57,7 +55,7 @@ export default function alterUtilisateur() {
 
   if (!mounted) return <p>Chargement...</p>;
 
-  if (id !== userId && !isAdmin) return <AccessDenied />;
+  if (id !== String(userId) && !isAdmin) return <AccessDenied />;
 
   if (loading) return <p>Chargement...</p>;
 
