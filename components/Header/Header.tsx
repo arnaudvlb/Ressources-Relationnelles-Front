@@ -15,10 +15,7 @@ export default function Header() {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const applyTheme = (isDark: boolean) => {
-      document.documentElement.setAttribute(
-        "data-theme",
-        isDark ? "dark" : "light",
-      );
+      document.documentElement.dataset.theme = isDark ? "dark" : "light";
     };
 
     applyTheme(mediaQuery.matches);
