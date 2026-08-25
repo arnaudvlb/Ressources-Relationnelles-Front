@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useUtilisateur } from "@/hooks/utilisateurs/useUtilisateur";
 import { useParams } from "next/navigation";
 
-export default function viewUtilisateur() {
+export default function ViewUtilisateur() {
   const params = useParams();
   const id = params.id as string;
 

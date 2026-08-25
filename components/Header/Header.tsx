@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { useAuth } from "@/hooks/useAuth";
@@ -14,10 +15,7 @@ export default function Header() {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const applyTheme = (isDark: boolean) => {
-      document.documentElement.setAttribute(
-        "data-theme",
-        isDark ? "dark" : "light",
-      );
+      document.documentElement.dataset.theme = isDark ? "dark" : "light";
     };
 
     applyTheme(mediaQuery.matches);
@@ -56,7 +54,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <img src="../logoRR.png" alt="Logo" />
+        <Image src="/logoRR.png" alt="Logo" width={100} height={100} />
       </div>
 
       <nav ref={navRef} className={styles.nav}>
@@ -120,6 +118,7 @@ export default function Header() {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Menu"
             aria-expanded={menuOpen}
+            type="button"
           >
             ☰
           </button>

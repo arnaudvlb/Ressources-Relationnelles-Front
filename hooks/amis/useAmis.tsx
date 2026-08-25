@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import getAmis from "@/services/amis/getAmis";
 import { Ami } from "@/types/database/amis";
-import { errorMonitor } from "node:events";
 
 export function useAmis() {
 

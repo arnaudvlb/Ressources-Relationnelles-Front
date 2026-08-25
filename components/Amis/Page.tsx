@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import Image from "next/image";
 
 import { useAmis } from "@/hooks/amis/useAmis";
 import { useCreateAmi } from "@/hooks/amis/useCreateAmi";
@@ -201,10 +202,12 @@ export default function Page() {
             <article key={friend.relationId} className={styles.userCard}>
               <div className={styles.userLeft}>
                 {friend.user.photo_profil ? (
-                  <img
+                  <Image
                     src={friend.user.photo_profil}
                     alt=""
-                    className={styles.avatar}
+                    className={styles.avatar} 
+                    width={100}
+                    height={100}
                   />
                 ) : (
                   <div className={styles.avatarPlaceholder}>

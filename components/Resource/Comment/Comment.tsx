@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import styles from "@/components/Resource/Comment/Comment.module.css";
 import { CommentProps } from "@/types/components/resource/CommentProps";
 import { useCreateCommentaire } from "@/hooks/commentaires/useCreateCommentaire";
@@ -82,6 +82,7 @@ export default function Comment({ commentaires, ressourceId }: CommentProps) {
                   onClick={() =>
                     setReplyToId(replyToId === parent.id ? null : parent.id)
                   }
+                  type="button"
                 >
                   Répondre
                 </button>
