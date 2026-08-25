@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import styles from "@/components/Resource/Comment/Comment.module.css";
 import { CommentProps } from "@/types/components/resource/CommentProps";
 import { useCreateCommentaire } from "@/hooks/commentaires/useCreateCommentaire";
