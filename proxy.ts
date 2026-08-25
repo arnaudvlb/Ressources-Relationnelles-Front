@@ -1,6 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
+  const maintenanceMode =
+    process.env.MAINTENANCE_MODE === "true";
+
+  const pathname = request.nextUrl.pathname;
+
+  const isMaintenancePage = pathname === "/maintenance";
+
+  const isStaticFile =
+    pathname.startsWith("/_next/") ||
+    pathname === "/favicon.ico" ||
+    pathname.includes(".");
+
+  if (
+    maintenanceMode &&
+    !isMaintenancePage &&
+    !isStaticFile
+  ) {
+    return NextResponse.redirect(
+      new URL("/maintenance", request.url)
+    );
+  }
+
+  // ta CSP en dessous...
+
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
   const csp = [
