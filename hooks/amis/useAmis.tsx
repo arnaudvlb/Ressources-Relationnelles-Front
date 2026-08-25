@@ -19,7 +19,7 @@ export function useAmis() {
       setAmis(data);
       return data;
     } catch (err: any) {
-      setError(err?.message ?? "Erreur inconnue");
+      setError(err instanceof Error ? err.message : "Une erreur est survenue.");
       return [];
     } finally {
       setLoading(false);

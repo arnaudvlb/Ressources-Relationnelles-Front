@@ -6,10 +6,6 @@ export default async function getRessource(
 ): Promise<Ressource> {
   const res = await apiFetch(`/api/ressources/${id}`);
 
-  if (!res.ok) {
-    throw new Error(`Erreur API: ${res.status}`);
-  }
-
   const data: Ressource = await res.json();
 
   return data;

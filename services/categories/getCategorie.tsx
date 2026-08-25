@@ -6,10 +6,6 @@ export default async function getCategorie(
 ): Promise<Categorie> {
   const res = await apiFetch(`/api/categories/${id}`);
 
-  if (!res.ok) {
-    throw new Error(`Erreur API: ${res.status}`);
-  }
-
   const data: Categorie = await res.json();
 
   return data;

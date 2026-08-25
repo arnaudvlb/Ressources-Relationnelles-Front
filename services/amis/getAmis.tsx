@@ -14,10 +14,6 @@ export default async function getAmis(): Promise<Ami[]> {
     },
   });
 
-  if (!res.ok) {
-    throw new Error(`Erreur API: ${res.status}`);
-  }
-
   const data: Collection<Ami> = await res.json();
 
   const items = data.member ?? data["hydra:member"] ?? [];
