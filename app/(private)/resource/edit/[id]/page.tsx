@@ -10,7 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function newResourcePage() {
+export default function NewResourcePage() {
   const [message, setMessage] = useState("");
 
   const params = useParams();

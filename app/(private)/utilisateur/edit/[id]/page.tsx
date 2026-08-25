@@ -11,7 +11,7 @@ import { useUtilisateur } from "@/hooks/utilisateurs/useUtilisateur";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function alterUtilisateur() {
+export default function AlterUtilisateur() {
   const [message, setMessage] = useState("");
   const [mounted, setMounted] = useState(false);
 
@@ -36,7 +36,9 @@ export default function alterUtilisateur() {
       email: formData.email,
       pseudo: formData.pseudo,
       photoProfil: utilisateur?.photo_profil ?? "",
-      statusCompte: Boolean(formData.statusCompte) ?? utilisateur?.statusCompte,
+      statusCompte: formData.statusCompte
+        ? formData.statusCompte === "1"
+        : (utilisateur?.statusCompte ?? false),
       dateCreation: utilisateur?.dateCreation ?? new Date().toISOString(),
       role:
         formData.role != null
@@ -78,14 +80,7 @@ export default function alterUtilisateur() {
             "Pseudo",
             "Nouveau mot de passe",
           ]}
-          names={[
-            "nom",
-            "prenom",
-            "telephone",
-            "email",
-            "pseudo",
-            "password",
-          ]}
+          names={["nom", "prenom", "telephone", "email", "pseudo", "password"]}
           buttonText={loading ? "Mise à jour..." : "Mettre à jour les données"}
           placeHolders={[
             "Nom",
