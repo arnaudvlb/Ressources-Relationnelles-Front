@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { useAuth } from "@/hooks/useAuth";
@@ -56,7 +57,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <img src="../logoRR.png" alt="Logo" />
+        <Image src="/logoRR.png" alt="Logo" width={100} height={100} />
       </div>
 
       <nav ref={navRef} className={styles.nav}>
