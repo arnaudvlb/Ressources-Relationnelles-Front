@@ -82,6 +82,7 @@ export default function Comment({ commentaires, ressourceId }: CommentProps) {
                   onClick={() =>
                     setReplyToId(replyToId === parent.id ? null : parent.id)
                   }
+                  type="button"
                 >
                   Répondre
                 </button>

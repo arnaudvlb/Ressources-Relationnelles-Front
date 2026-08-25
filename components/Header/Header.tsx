@@ -121,6 +121,7 @@ export default function Header() {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Menu"
             aria-expanded={menuOpen}
+            type="button"
           >
             ☰
           </button>
