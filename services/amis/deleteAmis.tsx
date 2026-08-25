@@ -6,7 +6,5 @@ export default async function deleteAmiAPI(id: number): Promise<void> {
     method: "DELETE",
   });
 
-  if (!res.ok) {
-    throw new Error(`Erreur API: ${res.status}`);
-  }
+  return await res.json();
 }

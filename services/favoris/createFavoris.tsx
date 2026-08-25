@@ -16,9 +16,5 @@ export default async function createFavori(
     body: JSON.stringify(payload),
   });
 
-  if (!res.ok) {
-    throw new Error(`Erreur API: ${res.status}`);
-  }
-
-  return res.json();
+  return await res.json();
 }
