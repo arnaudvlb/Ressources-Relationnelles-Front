@@ -4,14 +4,26 @@ export function proxy(request: NextRequest) {
   const maintenanceMode =
     process.env.MAINTENANCE_MODE === "true";
 
-  const isMaintenancePage =
-    request.nextUrl.pathname === "/maintenance";
+  const pathname = request.nextUrl.pathname;
 
-  if (maintenanceMode && !isMaintenancePage) {
+  const isMaintenancePage = pathname === "/maintenance";
+
+  const isStaticFile =
+    pathname.startsWith("/_next/") ||
+    pathname === "/favicon.ico" ||
+    pathname.includes(".");
+
+  if (
+    maintenanceMode &&
+    !isMaintenancePage &&
+    !isStaticFile
+  ) {
     return NextResponse.redirect(
       new URL("/maintenance", request.url)
     );
   }
+
+  // ta CSP en dessous...
 
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
